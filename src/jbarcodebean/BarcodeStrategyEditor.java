@@ -17,7 +17,7 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.0.2
+ * @Version      1.1
  */
 package jbarcodebean;
 
@@ -44,7 +44,9 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       "Interleaved 25 2:1",
       "MSI (mod 10 check)",
       "Codabar 3:1",
-      "Codabar 2:1"
+      "Codabar 2:1",
+      "EAN-13",
+      "EAN-8"
     };
   }
 
@@ -69,6 +71,10 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       setValue(new Codabar());
     } else if (s.equals("Codabar 2:1")) {
       setValue(new Codabar_2to1());
+    } else if (s.equals("EAN-13")) {
+      setValue(new Ean13());
+    } else if (s.equals("EAN-8")) {
+      setValue(new Ean8());
     } else {
       // Default to Code 39
       setValue(new Code39());
@@ -107,6 +113,12 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
     } else if (s instanceof Codabar) {
       // Codabar 3:1
       return "Codabar 3:1";
+    } else if (s instanceof Ean13) {
+      // EAN-13
+      return "EAN-13";
+    } else if (s instanceof Ean8) {
+      // EAN-8
+      return "EAN-8";
     } else {
       // Must set to something, so default to Code 39
       return "Code 39";
@@ -145,6 +157,12 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
     } else if (s instanceof Codabar) {
       // Codabar 3:1
       return "new jbarcodebean.Codabar()";
+    } else if (s instanceof Ean13) {
+      // EAN-13
+      return "new jbarcodebean.Ean13()";
+    } else if (s instanceof Ean8) {
+      // EAN-8
+      return "new jbarcodebean.Ean8()";
     } else {
       // Must set to something, so default to Code 39
       return "new jbarcodebean.Code39()";

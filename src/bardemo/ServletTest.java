@@ -12,7 +12,7 @@ import jbarcodebean.*;
 /**
  * Servlet example code.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class ServletTest extends HttpServlet {
 

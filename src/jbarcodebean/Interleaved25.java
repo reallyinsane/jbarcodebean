@@ -17,7 +17,7 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.0.2
+ * @Version      1.1
  */
 package jbarcodebean;
 

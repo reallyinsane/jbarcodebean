@@ -13,7 +13,7 @@ import jbarcodebean.*;
 /**
  * Application example code.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class SimpleDemo extends JFrame {
 
