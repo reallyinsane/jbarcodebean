@@ -1,0 +1,4 @@
+This directory is the output directory for the compiled classes, 
+and the "staging area" for other accompanying files to be included
+in the JBarcodeBean.jar and Demo.jar archives.
+
