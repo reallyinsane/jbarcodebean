@@ -17,7 +17,7 @@
  * Description:  Demo/Test harness for Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
+ * @Version      1.2
  */
 package bardemo;
 
@@ -25,7 +25,12 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.*;
 import jbarcodebean.*;
+
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
+
 import javax.swing.table.*;
 import java.beans.*;
 import java.lang.reflect.*;
@@ -39,7 +44,7 @@ import java.awt.geom.*;
 /**
  * Demo application.
  *
- * @version 1.1
+ * @version 1.2
  */
 public class Demo {
 
@@ -128,6 +133,7 @@ class DemoFrame extends JFrame {
   BorderLayout borderLayout5 = new BorderLayout();
   JBeanPropertyEditor beanPropertyEditor;
   JButton gifButton = new JButton();
+  JButton copyButton = new JButton();
   Component hStrut0;
   JLabel jLabel1 = new JLabel();
   JLabel codeTypeLabel = new JLabel();
@@ -208,6 +214,14 @@ class DemoFrame extends JFrame {
         gifButton_actionPerformed(e);
       }
     });
+    copyButton.setToolTipText("Copy barcode image to clipboard");
+    copyButton.setText("Copy");
+    copyButton.addActionListener(new java.awt.event.ActionListener() {
+
+      public void actionPerformed(ActionEvent e) {
+        copyButton_actionPerformed(e);
+      }
+    });
     jLabel1.setText("Bean Properties");
     codeTypeLabel.setAlignmentX((float) 0.5);
     codeTypeLabel.setToolTipText("");
@@ -222,6 +236,7 @@ class DemoFrame extends JFrame {
     box1.add(printButton, null);
     box1.add(hStrut0, null);
     box1.add(gifButton, null);
+    box1.add(copyButton, null);
     box1.add(hStrut1, null);
     box1.add(helpButton, null);
     box1.add(hStrut2, null);
@@ -265,6 +280,75 @@ class DemoFrame extends JFrame {
     }
   }
 
+//Inner class is used to hold an image while on the clipboard.
+  public static class ImageSelection
+    implements Transferable 
+  {
+    // the Image object which will be housed by the ImageSelection
+    private Image image;
+
+    public ImageSelection(Image image) {
+      this.image = image;
+    }
+
+    // Returns the supported flavors of our implementation
+    public DataFlavor[] getTransferDataFlavors() 
+    {
+      return new DataFlavor[] {DataFlavor.imageFlavor};
+    }
+    
+    // Returns true if flavor is supported
+    public boolean isDataFlavorSupported(DataFlavor flavor) 
+    {
+      return DataFlavor.imageFlavor.equals(flavor);
+    }
+
+    // Returns Image object housed by Transferable object
+    public Object getTransferData(DataFlavor flavor)
+      throws UnsupportedFlavorException,IOException 
+    {
+      if (!DataFlavor.imageFlavor.equals(flavor)) 
+      {
+        throw new UnsupportedFlavorException(flavor);
+      }
+      // else return the payload
+      return image;
+    }
+
+  }
+  
+  void copyButton_actionPerformed(ActionEvent e) {
+	
+  	
+  	if (barcode.getAngleDegrees() % 90 != 0) {
+        if (JOptionPane.showConfirmDialog(this, "Generating GIFs for barcodes that are not " +
+            "angled at a multiple of 90 degrees is not recommended.\nAre you sure?",
+            "Confirmation", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) != JOptionPane.YES_OPTION) {
+          return;
+        }
+      }
+
+  	ByteArrayOutputStream fos = new ByteArrayOutputStream();
+	try {
+		barcode.gifEncode(fos);
+		fos.close();
+	} catch (IOException e1) {
+		e1.printStackTrace();
+        JOptionPane.showMessageDialog(this, "Error writing GIF file", "Error", JOptionPane.ERROR_MESSAGE);
+		return;
+	}
+  	
+  	Image image = Toolkit.getDefaultToolkit().createImage( fos.toByteArray() );
+  	ImageSelection imageSelection =
+    new ImageSelection(image);
+    Toolkit
+      .getDefaultToolkit()
+      .getSystemClipboard()
+      .setContents(imageSelection, null);
+	
+  }
+  
+  
   void printButton_actionPerformed(ActionEvent e) {
     PrinterJob pj = PrinterJob.getPrinterJob();
     PageFormat pf = pj.defaultPage();
@@ -384,6 +468,20 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
     codeTypes.put("jbarcodebean.MSI",
         "<html><center>" +
         "MSI can encode the digits 0 through 9 only.<br>" +
+        "Check digit is mandatory.</center></html>"
+    );
+    // EAN-13
+    codeTypes.put("jbarcodebean.Ean13",
+        "<html><center>" +
+        "EAN-13 can encode the digits 0 through 9 only.<br>" +
+        "The string to encode MUST be EXACTLY 12 digits long.<br>" +
+        "Check digit is mandatory.</center></html>"
+    );
+    // EAN-8
+    codeTypes.put("jbarcodebean.Ean8",
+        "<html><center>" +
+        "EAN-8 can encode the digits 0 through 9 only.<br>" +
+        "The string to encode MUST be EXACTLY 7 digits long.<br>" +
         "Check digit is mandatory.</center></html>"
     );
   }

@@ -11,8 +11,8 @@
  *  MERCHANTABILITY of FITNESS FOR A PARTICULAR PURPOSE. See the GNU
  *  Lesser General Public License for more details. 
  *
- *  This file was contributed to JBarcodeBean by José Gaonac'h.
- *  Copyright (C) 2004 José Gaonac'h.
+ *  This file was contributed to JBarcodeBean by Jose Gaonac'h.
+ *  Copyright (C) 2004 Jose Gaonac'h.
  */
 
 package jbarcodebean;
@@ -24,7 +24,7 @@ package jbarcodebean;
  * Only the first 12 digits are considered: the checksum (13th digit) is
  * always generated (MANDATORY_CHECKSUM).
  *
- * @author  José Gaonac'h
+ * @author  Jose Gaonac'h
  */
 public class Ean13 extends AbstractBarcodeStrategy implements java.io.Serializable {
     

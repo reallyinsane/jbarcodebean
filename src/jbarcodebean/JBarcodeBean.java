@@ -110,6 +110,8 @@ import java.awt.image.*;
  * <li>{@link Codabar}
  * <li>{@link Codabar_2to1}
  * <li>{@link MSI}
+ * <li>{@link Ean8}
+ * <li>{@link Ean13}
  * </ul>
  * <p>
  *
