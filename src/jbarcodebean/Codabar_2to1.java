@@ -26,7 +26,7 @@ package jbarcodebean;
  * knows how to encode the
  * 2:1 (narrow) variant of the Codabar barcode type.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class Codabar_2to1 extends Codabar implements java.io.Serializable {
 

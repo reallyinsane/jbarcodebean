@@ -28,7 +28,7 @@ import java.beans.*;
  * interface, that provides GUI Builders with information about
  * {@link JBarcodeBean}.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class JBarcodeBeanBeanInfo extends SimpleBeanInfo {
 

@@ -29,7 +29,7 @@ import java.beans.PropertyEditorSupport;
  * {@link JBarcodeBean#setCodeType(BarcodeStrategy) codeType} property of
  * the {@link JBarcodeBean} Javabean component.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class BarcodeStrategyEditor extends PropertyEditorSupport {
 

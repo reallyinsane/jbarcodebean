@@ -26,7 +26,7 @@ package jbarcodebean;
  * knows how to encode the 3:1 (wide)
  * variant of the Interleaved Code 2 of 5 barcode type.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class Interleaved25 extends AbstractBarcodeStrategy implements java.io.Serializable {
 

@@ -26,7 +26,7 @@ package jbarcodebean;
  * knows how to encode the 2:1 (narrow)
  * variant of the Extended Code 3 of 9 barcode type.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class ExtendedCode39_2to1 extends ExtendedCode39 implements java.io.Serializable {
 

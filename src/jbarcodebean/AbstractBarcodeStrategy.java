@@ -27,7 +27,7 @@ package jbarcodebean;
  * classes that provide Code39, Interleaved Code25, Codabar, MSI and all 
  * derivative encoding strategies.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public abstract class AbstractBarcodeStrategy implements BarcodeStrategy {
 

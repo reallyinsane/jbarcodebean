@@ -31,7 +31,7 @@ import javax.swing.border.*;
 /**
  * A generic Javabean property editing component.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class JBeanPropertyEditor extends JPanel {
 

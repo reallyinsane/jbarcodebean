@@ -116,7 +116,7 @@ import java.awt.image.*;
  * <blockquote><b>*</b>See <i>"Design Patterns Elements of Reusable Object-Oriented Software",
  * Erich Gamma et al.</i> for more information about design patterns.</blockquote>
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class JBarcodeBean extends JComponent implements java.io.Serializable, Accessible {
 

@@ -26,7 +26,7 @@ package jbarcodebean;
  * given type of barcode.  Classes that implement this interface exist for each
  * of the barcode types such as Code39, Interleaved25, etc.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public interface BarcodeStrategy {
 

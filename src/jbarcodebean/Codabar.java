@@ -26,7 +26,7 @@ package jbarcodebean;
  * knows how to encode the 3:1 (wide)
  * variant of the Codabar barcode type.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class Codabar extends AbstractBarcodeStrategy implements java.io.Serializable {
 

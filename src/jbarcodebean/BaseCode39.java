@@ -24,7 +24,7 @@ package jbarcodebean;
 /**
  * Base class for Code39 variants.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public abstract class BaseCode39 extends AbstractBarcodeStrategy {
 

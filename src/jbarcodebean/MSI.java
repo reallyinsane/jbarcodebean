@@ -25,7 +25,7 @@ package jbarcodebean;
  * This class, which implements the {@link BarcodeStrategy} interface,
  * knows how to encode the MSI barcode type.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class MSI extends AbstractBarcodeStrategy implements java.io.Serializable {
 

@@ -26,7 +26,7 @@ package jbarcodebean;
  * fully encoded barcode.  The {@link BarcodeStrategy#encode encode} method
  * of {@link BarcodeStrategy} returns an instance of this class.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class EncodedBarcode implements java.io.Serializable {
 

@@ -24,7 +24,7 @@ package jbarcodebean;
 /**
  * Exception class for barcode encoding errors.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class BarcodeException extends Exception {
 

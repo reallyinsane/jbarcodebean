@@ -27,7 +27,7 @@ package jbarcodebean;
  * four special Code 128 function codes.  These four codes are defined
  * as constant class members for convenience: FNC_1 through FNC_4.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class Code128 extends AbstractBarcodeStrategy {
 

@@ -24,7 +24,7 @@ package jbarcodebean;
 /**
  * Class representing a single barcode module (bar or space).
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class BarcodeElement implements java.io.Serializable {
   /**

@@ -3,7 +3,7 @@
 ALL : doc/index.html JBarcodeBean.jar Demo.jar 
 
 doc/index.html : src/jbarcodebean/JBarcodeBean.java
-	javadoc -d doc -header "JBarcodeBean" -bottom "<center>JBarcodeBean - Copyright &copy; 2004, Dafydd Walters.</center>" -doctitle "JBarcodeBean 1.0.2 Javadocs" -windowtitle "JBarcodeBean 1.0.2 Javadocs" -group "JBarcodeBean Packages" com.dragontechnology.barcode -overview misc/overview.html -sourcepath src @misc/javadoc.list
+	javadoc -d doc -header "JBarcodeBean" -bottom "<center>JBarcodeBean - Copyright &copy; 2004, Dafydd Walters.</center>" -doctitle "JBarcodeBean 1.1 Javadocs" -windowtitle "JBarcodeBean 1.1 Javadocs" -group "JBarcodeBean Packages" com.dragontechnology.barcode -overview misc/overview.html -sourcepath src @misc/javadoc.list
 
 JBarcodeBean.jar : classes/jbarcodebean/JBarcodeBean.class
 	cp -f misc/jbarcodebean*.gif classes/jbarcodebean

@@ -39,7 +39,7 @@ import java.awt.geom.*;
 /**
  * Demo application.
  *
- * @version 1.0.2
+ * @version 1.1
  */
 public class Demo {
 
