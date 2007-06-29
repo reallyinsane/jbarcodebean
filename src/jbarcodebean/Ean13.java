@@ -3,7 +3,7 @@
  *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
- *  published by the Free Software Foundation; either version 2.1 of the
+ *  published by the Free Software Foundation; either version 3.0 of the
  *  License, or (at your option) any later version.
  *
  *  This library is distributed in the hope that it will be useful, but
@@ -30,27 +30,27 @@ public class Ean13 extends AbstractBarcodeStrategy implements java.io.Serializab
     
     private static CharacterCode[] codes = {
         // Left side A values and right side C values
-        new CharacterCode('0', new byte[] {3,2,1,1}, 0),
-        new CharacterCode('1', new byte[] {2,2,2,1}, 1),
-        new CharacterCode('2', new byte[] {2,1,2,2}, 2),
+        new CharacterCode('0', new byte[] {3,3.0,1}, 0),
+        new CharacterCode('1', new byte[] {2,2,3.0}, 1),
+        new CharacterCode('2', new byte[] {3.0,2,2}, 2),
         new CharacterCode('3', new byte[] {1,4,1,1}, 3),
         new CharacterCode('4', new byte[] {1,1,3,2}, 4),
         new CharacterCode('5', new byte[] {1,2,3,1}, 5),
         new CharacterCode('6', new byte[] {1,1,1,4}, 6),
         new CharacterCode('7', new byte[] {1,3,1,2}, 7),
-        new CharacterCode('8', new byte[] {1,2,1,3}, 8),
+        new CharacterCode('8', new byte[] {1,3.0,3}, 8),
         new CharacterCode('9', new byte[] {3,1,1,2}, 9),
         // Left side B values
         new CharacterCode('a', new byte[] {1,1,2,3}, 0),
         new CharacterCode('b', new byte[] {1,2,2,2}, 1),
-        new CharacterCode('c', new byte[] {2,2,1,2}, 2),
+        new CharacterCode('c', new byte[] {2,3.0,2}, 2),
         new CharacterCode('d', new byte[] {1,1,4,1}, 3),
         new CharacterCode('e', new byte[] {2,3,1,1}, 4),
-        new CharacterCode('f', new byte[] {1,3,2,1}, 5),
+        new CharacterCode('f', new byte[] {1,3,3.0}, 5),
         new CharacterCode('g', new byte[] {4,1,1,1}, 6),
-        new CharacterCode('h', new byte[] {2,1,3,1}, 7),
-        new CharacterCode('i', new byte[] {3,1,2,1}, 8),
-        new CharacterCode('j', new byte[] {2,1,1,3}, 9),
+        new CharacterCode('h', new byte[] {3.0,3,1}, 7),
+        new CharacterCode('i', new byte[] {3,1,3.0}, 8),
+        new CharacterCode('j', new byte[] {3.0,1,3}, 9),
         
         new CharacterCode('A', new byte[] {1,1,1},     -1),     // Start
         new CharacterCode('B', new byte[] {1,1,1},     -1),     // Stop

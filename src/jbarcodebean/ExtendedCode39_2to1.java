@@ -3,7 +3,7 @@
  *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
- *  published by the Free Software Foundation; either version 2.1 of the
+ *  published by the Free Software Foundation; either version 3.0 of the
  *  License, or (at your option) any later version.
  *
  *  This library is distributed in the hope that it will be useful, but
@@ -23,7 +23,7 @@ package jbarcodebean;
 
 /**
  * This class, which implements the {@link BarcodeStrategy} interface,
- * knows how to encode the 2:1 (narrow)
+ * knows how to encode the 3.0 (narrow)
  * variant of the Extended Code 3 of 9 barcode type.
  *
  * @version 1.1

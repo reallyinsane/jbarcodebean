@@ -3,7 +3,7 @@
  *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
- *  published by the Free Software Foundation; either version 2.1 of the
+ *  published by the Free Software Foundation; either version 3.0 of the
  *  License, or (at your option) any later version.
  *
  *  This library is distributed in the hope that it will be useful, but
@@ -37,14 +37,14 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
     return new String[] {
       "Code 128",
       "Code 39 3:1",
-      "Code 39 2:1",
+      "Code 39 3.0",
       "Ext Code 39 3:1",
-      "Ext Code 39 2:1",
+      "Ext Code 39 3.0",
       "Interleaved 25 3:1",
-      "Interleaved 25 2:1",
+      "Interleaved 25 3.0",
       "MSI (mod 10 check)",
       "Codabar 3:1",
-      "Codabar 2:1",
+      "Codabar 3.0",
       "EAN-13",
       "EAN-8"
     };
@@ -55,21 +55,21 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       setValue(new Code128());
     } else if (s.equals("Code 39 3:1")) {
       setValue(new Code39());
-    } else if (s.equals("Code 39 2:1")) {
+    } else if (s.equals("Code 39 3.0")) {
       setValue(new Code39_2to1());
     } else if (s.equals("Ext Code 39 3:1")) {
       setValue(new ExtendedCode39());
-    } else if (s.equals("Ext Code 39 2:1")) {
+    } else if (s.equals("Ext Code 39 3.0")) {
       setValue(new ExtendedCode39_2to1());
     } else if (s.equals("Interleaved 25 3:1")) {
       setValue(new Interleaved25());
-    } else if (s.equals("Interleaved 25 2:1")) {
+    } else if (s.equals("Interleaved 25 3.0")) {
       setValue(new Interleaved25_2to1());
     } else if (s.equals("MSI (mod 10 check)")) {
       setValue(new MSI());
     } else if (s.equals("Codabar 3:1")) {
       setValue(new Codabar());
-    } else if (s.equals("Codabar 2:1")) {
+    } else if (s.equals("Codabar 3.0")) {
       setValue(new Codabar_2to1());
     } else if (s.equals("EAN-13")) {
       setValue(new Ean13());
@@ -87,20 +87,20 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       // Code 128
       return "Code 128";
     } else if (s instanceof Code39_2to1) {
-      // Code 3 of 9 2:1
-      return "Code 39 2:1";
+      // Code 3 of 9 3.0
+      return "Code 39 3.0";
     } else if (s instanceof Code39) {
       // Code 3 of 9 3:1
       return "Code 39 3:1";
     } else if (s instanceof ExtendedCode39_2to1) {
-      // Extended Code 3 of 9 2:1
-      return "Ext Code 39 2:1";
+      // Extended Code 3 of 9 3.0
+      return "Ext Code 39 3.0";
     } else if (s instanceof ExtendedCode39) {
       // Extended Code 3 of 9 3:1
       return "Ext Code 39 3:1";
     } else if (s instanceof Interleaved25_2to1) {
-      // Interleaved 25 2:1
-      return "Interleaved 25 2:1";
+      // Interleaved 25 3.0
+      return "Interleaved 25 3.0";
     } else if (s instanceof Interleaved25) {
       // Interleaved 25 3:1
       return "Interleaved 25 3:1";
@@ -108,8 +108,8 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       // MSI
       return "MSI (mod 10 check)";
     } else if (s instanceof Codabar_2to1) {
-      // Codabar 2:1
-      return "Codabar 2:1";
+      // Codabar 3.0
+      return "Codabar 3.0";
     } else if (s instanceof Codabar) {
       // Codabar 3:1
       return "Codabar 3:1";
@@ -131,19 +131,19 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       // Code 128
       return "new jbarcodebean.Code128()";
     } else if (s instanceof Code39_2to1) {
-      // Code 3 of 9 2:1
+      // Code 3 of 9 3.0
       return "new jbarcodebean.Code39_2to1()";
     } else if (s instanceof Code39) {
       // Code 3 of 9 3:1
       return "new jbarcodebean.Code39()";
     } else if (s instanceof ExtendedCode39_2to1) {
-      // Extended Code 3 of 9 2:1
+      // Extended Code 3 of 9 3.0
       return "new jbarcodebean.ExtendedCode39_2to1()";
     } else if (s instanceof ExtendedCode39) {
       // Extended Code 3 of 9 3:1
       return "new jbarcodebean.ExtendedCode39()";
     } else if (s instanceof Interleaved25_2to1) {
-      // Interleaved 25 2:1
+      // Interleaved 25 3.0
       return "new jbarcodebean.Interleaved25_2to1()";
     } else if (s instanceof Interleaved25) {
       // Interleaved 25 3:1
@@ -152,7 +152,7 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
       // MSI
       return "new jbarcodebean.MSI()";
     } else if (s instanceof Codabar_2to1) {
-      // Codabar 2:1
+      // Codabar 3.0
       return "new jbarcodebean.Codabar_2to1()";
     } else if (s instanceof Codabar) {
       // Codabar 3:1

@@ -3,7 +3,7 @@
  *
  *  This code is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
- *  published by the Free Software Foundation; either version 2.1 of the
+ *  published by the Free Software Foundation; either version 3.0 of the
  *  License, or (at your option) any later version.
  *
  *  This code is distributed in the hope that it will be useful, but
@@ -418,7 +418,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "dot(.) space( ) dollar($) slash(/) plus(+)<br>" +
         "and percent(%). Check digit is optional.</center></html>"
     );
-    // Code 3 of 9 2:1
+    // Code 3 of 9 3.0
     codeTypes.put("jbarcodebean.Code39_2to1",
         "<html><center>" +
         "Code 3 of 9 can encode the digits 0 through 9, the<br>" +
@@ -433,7 +433,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "characters minus(-) dot(.) dollar($) slash(/) plus(+)<br>" +
         "and colon(:). Codabar has no check digit.</center></html>"
     );
-    // Codabar 2:1
+    // Codabar 3.0
     codeTypes.put("jbarcodebean.Codabar_2to1",
         "<html><center>" +
         "Codabar can encode the digits 0 through 9, and the<br>" +
@@ -446,7 +446,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "Extended Code 3 of 9 can encode the full set of 128 ASCII<br>" +
         "characters. Check digit is optional.</center></html>"
     );
-    // Extended Code 3 of 9 2:1
+    // Extended Code 3 of 9 3.0
     codeTypes.put("jbarcodebean.ExtendedCode39_2to1",
         "<html><center>" +
         "Extended Code 3 of 9 can encode the full set of 128 ASCII<br>" +
@@ -458,7 +458,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "Interleaved 2 of 5 can encode the digits 0 through 9 only.<br>" +
         "Check digit is optional.</center></html>"
     );
-    // Interleaved 2 of 5 2:1
+    // Interleaved 2 of 5 3.0
     codeTypes.put("jbarcodebean.Interleaved25_2to1",
         "<html><center>" +
         "Interleaved 2 of 5 can encode the digits 0 through 9 only.<br>" +
