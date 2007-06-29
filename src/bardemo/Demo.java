@@ -418,7 +418,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "dot(.) space( ) dollar($) slash(/) plus(+)<br>" +
         "and percent(%). Check digit is optional.</center></html>"
     );
-    // Code 3 of 9 3.0
+    // Code 3 of 9 2:1
     codeTypes.put("jbarcodebean.Code39_2to1",
         "<html><center>" +
         "Code 3 of 9 can encode the digits 0 through 9, the<br>" +
@@ -433,7 +433,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "characters minus(-) dot(.) dollar($) slash(/) plus(+)<br>" +
         "and colon(:). Codabar has no check digit.</center></html>"
     );
-    // Codabar 3.0
+    // Codabar 2:1
     codeTypes.put("jbarcodebean.Codabar_2to1",
         "<html><center>" +
         "Codabar can encode the digits 0 through 9, and the<br>" +
@@ -446,7 +446,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "Extended Code 3 of 9 can encode the full set of 128 ASCII<br>" +
         "characters. Check digit is optional.</center></html>"
     );
-    // Extended Code 3 of 9 3.0
+    // Extended Code 3 of 9 2:1
     codeTypes.put("jbarcodebean.ExtendedCode39_2to1",
         "<html><center>" +
         "Extended Code 3 of 9 can encode the full set of 128 ASCII<br>" +
@@ -458,7 +458,7 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "Interleaved 2 of 5 can encode the digits 0 through 9 only.<br>" +
         "Check digit is optional.</center></html>"
     );
-    // Interleaved 2 of 5 3.0
+    // Interleaved 2 of 5 2:1
     codeTypes.put("jbarcodebean.Interleaved25_2to1",
         "<html><center>" +
         "Interleaved 2 of 5 can encode the digits 0 through 9 only.<br>" +
