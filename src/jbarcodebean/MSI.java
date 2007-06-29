@@ -30,18 +30,18 @@ package jbarcodebean;
 public class MSI extends AbstractBarcodeStrategy implements java.io.Serializable {
 
   private static CharacterCode[] codes = {
-    new CharacterCode('1', new byte[] {1,3.0,3.0,2,3.0}, 1),
-    new CharacterCode('2', new byte[] {1,3.0,2,3.0,1,3}, 2),
-    new CharacterCode('3', new byte[] {1,3.0,2,3.0,3.0}, 3),
-    new CharacterCode('4', new byte[] {1,2,3.0,1,3.0,3}, 4),
-    new CharacterCode('5', new byte[] {1,2,3.0,1,2,3.0}, 5),
-    new CharacterCode('6', new byte[] {1,2,3.0,3.0,1,3}, 6),
-    new CharacterCode('7', new byte[] {1,2,3.0,3.0,3.0}, 7),
-    new CharacterCode('8', new byte[] {3.0,1,3.0,3.0,3}, 8),
-    new CharacterCode('9', new byte[] {3.0,1,3.0,2,3.0}, 9),
-    new CharacterCode('0', new byte[] {1,3.0,3.0,3.0,3}, 0),
-    new CharacterCode('A', new byte[] {3.0}, -1),     // Start
-    new CharacterCode('B', new byte[] {1,3.0}, -1)    // Stop
+    new CharacterCode('1', new byte[] {1,2,1,2,1,2,2,1}, 1),
+    new CharacterCode('2', new byte[] {1,2,1,2,2,1,1,3}, 2),
+    new CharacterCode('3', new byte[] {1,2,1,2,2,1,2,1}, 3),
+    new CharacterCode('4', new byte[] {1,2,2,1,1,2,1,3}, 4),
+    new CharacterCode('5', new byte[] {1,2,2,1,1,2,2,1}, 5),
+    new CharacterCode('6', new byte[] {1,2,2,1,2,1,1,3}, 6),
+    new CharacterCode('7', new byte[] {1,2,2,1,2,1,2,1}, 7),
+    new CharacterCode('8', new byte[] {2,1,1,2,1,2,1,3}, 8),
+    new CharacterCode('9', new byte[] {2,1,1,2,1,2,2,1}, 9),
+    new CharacterCode('0', new byte[] {1,2,1,2,1,2,1,3}, 0),
+    new CharacterCode('A', new byte[] {2,1}, -1),     // Start
+    new CharacterCode('B', new byte[] {1,2,1}, -1)    // Stop
   };
 
   /**

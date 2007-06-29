@@ -24,7 +24,7 @@ package jbarcodebean;
 /**
  * This class, which implements the {@link BarcodeStrategy} interface,
  * knows how to encode the
- * 3.0 (narrow) variant of the Code 3 of 9 barcode type.
+ * 2:1 (narrow) variant of the Code 3 of 9 barcode type.
  *
  * @version 1.1
  */
