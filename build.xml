@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!--
+################################################################################
+# ANT script to compile and build JBarcodeBean releases
+#
+# Created: 2007/08/07
+# Author: Matthias Hanisch 
+# Email: mhanisch@users.sourceforge.net
+#
+################################################################################
+#
+# the following targets can be used:
+# - "doc" creates the API documentation which will be saved in "doc" directory
+# - "release" compiles the source code of JBarcodeBean and creates
+#   JBarcodeBean.jar in "target" directory
+# - "releasedemo" compiles the source code of the demo package and creates
+#   Demo.jar in "target" directory
+#
+# the following targets are for internal use (you can use them too)
+# - "clean" deletes the "target/src" and "target/bin" directories
+# - "prepare" re-creates the "target/src" and "target/bin" directories
+# - "compile" compiles the source code of JBarcodeBean to "target/bin"
+# - "compiledemo" compiles the source code of the demo package to "target/bin"
+#
+################################################################################
+ -->
+
+<project name="jbarcodebean" default="release">
+	<property name="target.dir" value="target"/>
+	<property name="target.src" value="${target.dir}/src"/>
+	<property name="target.bin" value="${target.dir}/bin"/>
+	<!-- please change the path the location of j2ee.jar on your system -->
+	<property name="J2EE" value="lib/j2ee.jar"/>
+	<target name="clean">
+		<delete dir="${target.src}"/>
+		<delete dir="${target.bin}"/>
+	</target>
+	<target name="prepare" depends="clean">
+		<mkdir dir="${target.src}"/>
+		<mkdir dir="${target.bin}"/>
+	</target>
+	
+	<target name="compile" depends="prepare">
+		<path id="classpath.compile.jbarcodebean">
+    		<pathelement location="${J2EE}"/>
+		</path>
+		<copy todir="${target.src}">
+			<fileset dir="src">
+	   			<include name="Acme/**"/>
+	   			<include name="jbarcodebean/**"/>
+			</fileset>
+		</copy>
+    	<javac destdir="${target.bin}" target="1.1" source="1.1" optimize="true" debug="false" deprecation="false" srcdir="${target.src}">
+    		<classpath refid="classpath.compile.jbarcodebean"/>
+		</javac>		
+	</target>
+	
+	<target name="release" depends="compile">
+		<copy todir="${target.bin}">
+			<fileset dir="misc">
+			      <include name="jbarcodebean*.gif"/>
+			</fileset>
+		</copy>
+		<jar destfile="${target.dir}/JBarcodeBean.jar" manifest="misc/JBarcodeBean.manifest">
+			<fileset dir="${target.bin}"/>
+		</jar>
+		<antcall target="clean"/>
+	</target>
+	
+	<target name="compiledemo" depends="release">
+		<path id="classpath.compile.demo">
+    		<pathelement location="${J2EE}"/>
+    		<pathelement location="${target.dir}/JBarcodeBean.jar"/>
+		</path>
+		<antcall target="prepare"/>
+		<copy todir="${target.src}">
+			<fileset dir="src">
+	   			<include name="bardemo/**"/>
+			</fileset>
+		</copy>
+    	<javac destdir="${target.bin}" target="1.1" source="1.1" optimize="true" debug="false" deprecation="false" srcdir="${target.src}">
+    		<include name="bardemo/**"/>
+    		<classpath refid="classpath.compile.demo"/>
+		</javac>		
+	</target>
+	<target name="releasedemo" depends="compiledemo">
+		<copy todir="${target.bin}/bardemo">
+			<fileset dir="misc">
+			      <include name="demoicon.gif"/>
+			      <include name="property_icon.gif"/>
+			      <include name="SimpleDemoScreenshot.gif"/>
+			      <include name="uml_diag.gif"/>
+			      <include name="JBarcodeBean.html"/>
+			      <include name="Examples.html"/>
+			</fileset>
+		</copy>
+		<jar destfile="${target.dir}/Demo.jar" manifest="misc/Demo.manifest">
+			<fileset dir="${target.bin}"/>
+		</jar>
+		<antcall target="clean"/>
+	</target>
+	<target name="doc">
+		<delete dir="doc"/>
+		<mkdir dir="doc"/>
+		<javadoc overview="misc/overview.html" destdir="doc"
+			doctitle="JBarcodeBean 1.1 Javadocs"
+			windowtitle="JBarcodeBean 1.1 Javadocs"
+			group="JBarcodeBean Packages"
+			header="JBarcodeBean">
+			<bottom>
+				<![CDATA[ <center>JBarcodeBean - Copyright &copy; 2004, Dafydd Walters.</center> ]]>
+			</bottom>
+			<fileset dir="src">
+				<include name="jbarcodebean/**.java"/>
+				<include name="Acme/**.java"/>
+				<include name="Acme/jpm/Encoders/**.java"/>
+			</fileset>			
+		</javadoc>
+	</target>
+</project>
+
+<!-- 
+# TODO: Clean up this mess of a Makefile. It's a horrid kludge at the moment.
+
+ALL : doc/index.html JBarcodeBean.jar Demo.jar 
+doc/index.html : src/jbarcodebean/JBarcodeBean.java
+	javadoc -d doc -header "JBarcodeBean" -bottom "<center>JBarcodeBean - Copyright &copy; 2004, Dafydd Walters.</center>" -doctitle "JBarcodeBean 1.1 Javadocs" -windowtitle "JBarcodeBean 1.1 Javadocs" -group "JBarcodeBean Packages" com.dragontechnology.barcode -overview misc/overview.html -sourcepath src @misc/javadoc.list
+
+
+
+classes/bardemo/Demo.class : src/bardemo/Demo.java JBarcodeBean.jar
+	javac -classpath JBarcodeBean.jar -d classes src/bardemo/Demo.java src/bardemo/HelpViewer.java src/bardemo/JBeanPropertyEditor.java
+
+Demo.jar : classes/bardemo/Demo.class doc/index.html
+	cp -f misc/demoicon.gif classes/bardemo
+	cp -f misc/property_icon.gif classes/bardemo
+	cp -f misc/SimpleDemoScreenshot.gif classes/bardemo
+	cp -f misc/uml_diag.gif classes/bardemo
+	cp -f misc/JBarcodeBean.html classes/bardemo
+	cp -f misc/Examples.html classes/bardemo
+	cp -Rf doc classes/bardemo
+	jar cfm Demo.jar misc/Demo.manifest -C classes bardemo doc
+
+clean :
+	rm -rf doc/*.html doc/*.css doc/package-list doc/resources doc/Acme doc/jbarcodebean
+	rm -rf classes/Acme classes/jbarcodebean classes/bardemo
+	rm -f JBarcodeBean.jar
+	rm -f Demo.jar
+ -->
+
