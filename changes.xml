@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<document>
+  <properties>
+    <title>Changes BarcodeBean Project</title>
+    <author>Dafydd Walters</author>
+    <author>Matthias Hanisch</author>
+  </properties>
+  <body>
+     <release version="1.1.2-SNAPSHOT" date="in SVN" description="none yet">
+      <action dev="mhanisch" type="fix">
+      	BarcodeStrategyEditor.getAsText() did return wrong values for
+      	BarcodeStrategy instances which were sub classes of other
+      	BarcodeStrategy implementations.
+      </action>
+      <action dev="mhanisch" type="fix">
+      	JBarcodeBeanBeanInfo.getIcon() used wrong file names for the icons so
+      	that no icons were returned.
+      </action>
+      <action dev="mhanisch" type="add">
+        ANT build script(build.xml) added to create releases more easy.
+      </action>
+      <action dev="mhanisch" type="add">
+        changes.xml to log changes made to JBarcodBean project added.
+      </action>
+     </release>
+  </body>
+</document>
