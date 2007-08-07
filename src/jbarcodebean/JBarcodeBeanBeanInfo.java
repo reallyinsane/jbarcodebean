@@ -36,16 +36,16 @@ public class JBarcodeBeanBeanInfo extends SimpleBeanInfo {
     java.awt.Image img = null;
     switch (iconKind) {
       case BeanInfo.ICON_MONO_16x16:
-        img = loadImage("barcode_bw16.gif");
+        img = loadImage("jbarcodebean_bw16.gif");
         break;
       case BeanInfo.ICON_COLOR_16x16:
-        img = loadImage("barcode_c16.gif");
+        img = loadImage("jbarcodebean_c16.gif");
         break;
       case BeanInfo.ICON_MONO_32x32:
-        img = loadImage("barcode_bw32.gif");
+        img = loadImage("jbarcodebean_bw32.gif");
         break;
       case BeanInfo.ICON_COLOR_32x32:
-        img = loadImage("barcode_c32.gif");
+        img = loadImage("jbarcodebean_c32.gif");
         break;
     }
     return img;
