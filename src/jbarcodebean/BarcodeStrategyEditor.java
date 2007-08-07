@@ -33,139 +33,152 @@ import java.beans.PropertyEditorSupport;
  */
 public class BarcodeStrategyEditor extends PropertyEditorSupport {
 
-  public String[] getTags() {
-    return new String[] {
-      "Code 128",
-      "Code 39 3:1",
-      "Code 39 2:1",
-      "Ext Code 39 3:1",
-      "Ext Code 39 2:1",
-      "Interleaved 25 3:1",
-      "Interleaved 25 2:1",
-      "MSI (mod 10 check)",
-      "Codabar 3:1",
-      "Codabar 2:1",
-      "EAN-13",
-      "EAN-8"
-    };
-  }
+    private static final String EAN_8               = "EAN-8";
+    private static final String EAN_13              = "EAN-13";
+    private static final String CODABAR_2_1         = "Codabar 2:1";
+    private static final String CODABAR_3_1         = "Codabar 3:1";
+    private static final String MSI_MOD_10_CHECK    = "MSI (mod 10 check)";
+    private static final String INTERLEAVED_25_2_1  = "Interleaved 25 2:1";
+    private static final String INTERLEAVED_25_3_1  = "Interleaved 25 3:1";
+    private static final String EXT_CODE_39_2_1     = "Ext Code 39 2:1";
+    private static final String EXT_CODE_39_3_1     = "Ext Code 39 3:1";
+    private static final String CODE_39_2_1         = "Code 39 2:1";
+    private static final String CODE_39_3_1         = "Code 39 3:1";
+    private static final String CODE_128            = "Code 128";
 
-  public void setAsText(String s) {
-    if (s.equals("Code 128")) {
-      setValue(new Code128());
-    } else if (s.equals("Code 39 3:1")) {
-      setValue(new Code39());
-    } else if (s.equals("Code 39 2:1")) {
-      setValue(new Code39_2to1());
-    } else if (s.equals("Ext Code 39 3:1")) {
-      setValue(new ExtendedCode39());
-    } else if (s.equals("Ext Code 39 2:1")) {
-      setValue(new ExtendedCode39_2to1());
-    } else if (s.equals("Interleaved 25 3:1")) {
-      setValue(new Interleaved25());
-    } else if (s.equals("Interleaved 25 2:1")) {
-      setValue(new Interleaved25_2to1());
-    } else if (s.equals("MSI (mod 10 check)")) {
-      setValue(new MSI());
-    } else if (s.equals("Codabar 3:1")) {
-      setValue(new Codabar());
-    } else if (s.equals("Codabar 2:1")) {
-      setValue(new Codabar_2to1());
-    } else if (s.equals("EAN-13")) {
-      setValue(new Ean13());
-    } else if (s.equals("EAN-8")) {
-      setValue(new Ean8());
-    } else {
-      // Default to Code 39
-      setValue(new Code39());
+    public String[] getTags() {
+        return new String[] {
+                        CODE_128,
+                        CODE_39_3_1,
+                        CODE_39_2_1,
+                        EXT_CODE_39_3_1,
+                        EXT_CODE_39_2_1,
+                        INTERLEAVED_25_3_1,
+                        INTERLEAVED_25_2_1,
+                        MSI_MOD_10_CHECK,
+                        CODABAR_3_1,
+                        CODABAR_2_1,
+                        EAN_13,
+                        EAN_8
+        };
     }
-  }
 
-  public String getAsText() {
-    BarcodeStrategy s = (BarcodeStrategy)getValue();
-    if (s instanceof Code128) {
-      // Code 128
-      return "Code 128";
-    } else if (s instanceof Code39_2to1) {
-      // Code 3 of 9 2:1
-      return "Code 39 2:1";
-    } else if (s instanceof Code39) {
-      // Code 3 of 9 3:1
-      return "Code 39 3:1";
-    } else if (s instanceof ExtendedCode39_2to1) {
-      // Extended Code 3 of 9 2:1
-      return "Ext Code 39 2:1";
-    } else if (s instanceof ExtendedCode39) {
-      // Extended Code 3 of 9 3:1
-      return "Ext Code 39 3:1";
-    } else if (s instanceof Interleaved25_2to1) {
-      // Interleaved 25 2:1
-      return "Interleaved 25 2:1";
-    } else if (s instanceof Interleaved25) {
-      // Interleaved 25 3:1
-      return "Interleaved 25 3:1";
-    } else if (s instanceof MSI) {
-      // MSI
-      return "MSI (mod 10 check)";
-    } else if (s instanceof Codabar_2to1) {
-      // Codabar 2:1
-      return "Codabar 2:1";
-    } else if (s instanceof Codabar) {
-      // Codabar 3:1
-      return "Codabar 3:1";
-    } else if (s instanceof Ean13) {
-      // EAN-13
-      return "EAN-13";
-    } else if (s instanceof Ean8) {
-      // EAN-8
-      return "EAN-8";
-    } else {
-      // Must set to something, so default to Code 39
-      return "Code 39";
+    public void setAsText(String s) {
+        if (s.equals(CODE_128)) {
+            setValue(new Code128());
+        } else if (s.equals(CODE_39_3_1)) {
+            setValue(new Code39());
+        } else if (s.equals(CODE_39_2_1)) {
+            setValue(new Code39_2to1());
+        } else if (s.equals(EXT_CODE_39_3_1)) {
+            setValue(new ExtendedCode39());
+        } else if (s.equals(EXT_CODE_39_2_1)) {
+            setValue(new ExtendedCode39_2to1());
+        } else if (s.equals(INTERLEAVED_25_3_1)) {
+            setValue(new Interleaved25());
+        } else if (s.equals(INTERLEAVED_25_2_1)) {
+            setValue(new Interleaved25_2to1());
+        } else if (s.equals(MSI_MOD_10_CHECK)) {
+            setValue(new MSI());
+        } else if (s.equals(CODABAR_3_1)) {
+            setValue(new Codabar());
+        } else if (s.equals(CODABAR_2_1)) {
+            setValue(new Codabar_2to1());
+        } else if (s.equals(EAN_13)) {
+            setValue(new Ean13());
+        } else if (s.equals(EAN_8)) {
+            setValue(new Ean8());
+        } else {
+            // Default to Code 39
+            setValue(new Code39());
+        }
     }
-  }
 
-  public String getJavaInitializationString() {
-    BarcodeStrategy s = (BarcodeStrategy)getValue();
-    if (s instanceof Code128) {
-      // Code 128
-      return "new jbarcodebean.Code128()";
-    } else if (s instanceof Code39_2to1) {
-      // Code 3 of 9 2:1
-      return "new jbarcodebean.Code39_2to1()";
-    } else if (s instanceof Code39) {
-      // Code 3 of 9 3:1
-      return "new jbarcodebean.Code39()";
-    } else if (s instanceof ExtendedCode39_2to1) {
-      // Extended Code 3 of 9 2:1
-      return "new jbarcodebean.ExtendedCode39_2to1()";
-    } else if (s instanceof ExtendedCode39) {
-      // Extended Code 3 of 9 3:1
-      return "new jbarcodebean.ExtendedCode39()";
-    } else if (s instanceof Interleaved25_2to1) {
-      // Interleaved 25 2:1
-      return "new jbarcodebean.Interleaved25_2to1()";
-    } else if (s instanceof Interleaved25) {
-      // Interleaved 25 3:1
-      return "new jbarcodebean.Interleaved25()";
-    } else if (s instanceof MSI) {
-      // MSI
-      return "new jbarcodebean.MSI()";
-    } else if (s instanceof Codabar_2to1) {
-      // Codabar 2:1
-      return "new jbarcodebean.Codabar_2to1()";
-    } else if (s instanceof Codabar) {
-      // Codabar 3:1
-      return "new jbarcodebean.Codabar()";
-    } else if (s instanceof Ean13) {
-      // EAN-13
-      return "new jbarcodebean.Ean13()";
-    } else if (s instanceof Ean8) {
-      // EAN-8
-      return "new jbarcodebean.Ean8()";
-    } else {
-      // Must set to something, so default to Code 39
-      return "new jbarcodebean.Code39()";
+    public String getAsText() {
+        BarcodeStrategy s = (BarcodeStrategy)getValue();
+        if (s.getClass().equals(Code128.class)) {
+            // Code 128
+            return CODE_128;
+        } else if (s.getClass().equals(Code39_2to1.class)) {
+            // Code 3 of 9 2:1
+            return CODE_39_2_1;
+        } else if (s.getClass().equals(Code39.class)) {
+            // Code 3 of 9 3:1
+            return CODE_39_3_1;
+        } else if (s.getClass().equals(ExtendedCode39_2to1.class)) {
+            // Extended Code 3 of 9 2:1
+            return EXT_CODE_39_2_1;
+        } else if (s.getClass().equals(ExtendedCode39.class)) {
+            // Extended Code 3 of 9 3:1
+            return EXT_CODE_39_3_1;
+        } else if (s.getClass().equals(Interleaved25_2to1.class)) {
+            // Interleaved 25 2:1
+            return INTERLEAVED_25_2_1;
+        } else if (s.getClass().equals(Interleaved25.class)) {
+            // Interleaved 25 3:1
+            return INTERLEAVED_25_3_1;
+        } else if (s.getClass().equals(MSI.class)) {
+            // MSI
+            return MSI_MOD_10_CHECK;
+        } else if (s.getClass().equals(Codabar_2to1.class)) {
+            // Codabar 2:1
+            return CODABAR_2_1;
+        } else if (s.getClass().equals(Codabar.class)) {
+            // Codabar 3:1
+            return CODABAR_3_1;
+        } else if (s.getClass().equals(Ean13.class)) {
+            // EAN-13
+            return EAN_13;
+        } else if (s.getClass().equals(Ean8.class)) {
+            // EAN-8
+            return EAN_8;
+        } else {
+            // Must set to something, so default to Code 39
+            return "Code 39";
+        }
     }
-  }
+
+    public String getJavaInitializationString() {
+        BarcodeStrategy s = (BarcodeStrategy)getValue();
+        if (s.getClass().equals(Code128.class)) {
+            // Code 128
+            return "new jbarcodebean.Code128()";
+        } else if (s.getClass().equals(Code39_2to1.class)) {
+            // Code 3 of 9 2:1
+            return "new jbarcodebean.Code39_2to1()";
+        } else if (s.getClass().equals(Code39.class)) {
+            // Code 3 of 9 3:1
+            return "new jbarcodebean.Code39()";
+        } else if (s.getClass().equals(ExtendedCode39_2to1.class)) {
+            // Extended Code 3 of 9 2:1
+            return "new jbarcodebean.ExtendedCode39_2to1()";
+        } else if (s.getClass().equals(ExtendedCode39.class)) {
+            // Extended Code 3 of 9 3:1
+            return "new jbarcodebean.ExtendedCode39()";
+        } else if (s.getClass().equals(Interleaved25_2to1.class)) {
+            // Interleaved 25 2:1
+            return "new jbarcodebean.Interleaved25_2to1()";
+        } else if (s.getClass().equals(Interleaved25.class)) {
+            // Interleaved 25 3:1
+            return "new jbarcodebean.Interleaved25()";
+        } else if (s.getClass().equals(MSI.class)) {
+            // MSI
+            return "new jbarcodebean.MSI()";
+        } else if (s.getClass().equals(Codabar_2to1.class)) {
+            // Codabar 2:1
+            return "new jbarcodebean.Codabar_2to1()";
+        } else if (s.getClass().equals(Codabar.class)) {
+            // Codabar 3:1
+            return "new jbarcodebean.Codabar()";
+        } else if (s.getClass().equals(Ean13.class)) {
+            // EAN-13
+            return "new jbarcodebean.Ean13()";
+        } else if (s.getClass().equals(Ean8.class)) {
+            // EAN-8
+            return "new jbarcodebean.Ean8()";
+        } else {
+            // Must set to something, so default to Code 39
+            return "new jbarcodebean.Code39()";
+        }
+    }
 }
