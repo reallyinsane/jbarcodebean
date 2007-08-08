@@ -511,16 +511,10 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     this.codeType = codeType;
     firePropertyChange(CODE_TYPE_CHANGED_PROPERTY, oldValue, codeType);
     if (codeType != null && codeType.requiresChecksum() == BarcodeStrategy.MANDATORY_CHECKSUM && checkDigit == false) {
-      try {
-        setCheckDigit(true);
-      } catch (BarcodeException ex) {
-      }
+      setCheckDigit(true);
       // encode(), recalculateSizes(), and repaint() will be done in setChecked().
     } else if (codeType != null && codeType.requiresChecksum() == BarcodeStrategy.NO_CHECKSUM && checkDigit == true) {
-      try {
-        setCheckDigit(false);
-      } catch (BarcodeException ex) {
-      }
+      setCheckDigit(false);
       // encode(), recalculateSizes(), and repaint() will be done in setChecked().
     } else {
       encode();
@@ -545,14 +539,18 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
    * barcode.  <tt>true</tt> = check digit is encoded, <tt>false</tt>
    * = check digit is not encoded.
    */
-  public void setCheckDigit(boolean checkDigit) throws BarcodeException {
+  public void setCheckDigit(boolean checkDigit){
     if (codeType != null) {
       if (codeType.requiresChecksum() == BarcodeStrategy.MANDATORY_CHECKSUM  && checkDigit == false) {
         // Cannot disable checksum
-        throw new BarcodeException("Checksum mandatory");
+        // although the checksum cannot be disabled there should be no exception
+        // the call should simply be ignored (requestid 1329396)
+        return;
       } else if (codeType.requiresChecksum() == BarcodeStrategy.NO_CHECKSUM  && checkDigit == true) {
         // Cannot enable checksum
-        throw new BarcodeException("No checksum");
+        // although the checksum cannot be enabled there should be no exception
+        // the call should simply be ignored (requestid 1329396)
+        return;
       }
     }
     boolean oldValue = this.checkDigit;
