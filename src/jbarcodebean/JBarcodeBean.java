@@ -583,8 +583,16 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     g.fillRect(0, 0, d.width, d.height);
 
     // Set clip rectangle to prevent barcode overwriting border
-    g.setClip(insets.left, insets.top,
+    
+    // also regard the clip the graphics object already has to avoid paint
+    // outside the clip of the graphics. therefore we make an intersect of both
+    // clips
+    Area areaOldClip=new Area(oldClip);
+    Rectangle newClip=new Rectangle(insets.left, insets.top,
       d.width - insets.left - insets.right, d.height - insets.top - insets.bottom);
+    Area areaNewClip=new Area(newClip);
+    areaOldClip.intersect(areaNewClip);
+    g.setClip(areaOldClip);
 
     // Apply rotate and transale transform
     g.rotate(angleDegrees / 180 * Math.PI, d.width / 2.0, d.height / 2.0);
