@@ -484,6 +484,14 @@ class BarcodePropertyChangeListener implements PropertyChangeListener {
         "The string to encode MUST be EXACTLY 7 digits long.<br>" +
         "Check digit is mandatory.</center></html>"
     );
+    // Code93
+    codeTypes.put("jbarcodebean.Code93",
+        "<html><center>" +
+        "Code 93 can encode the digits 0 through 9, the<br>" +
+        "upper case letters A through Z, and the characters minus(-)<br>" +
+        "dot(.) space( ) dollar($) slash(/) plus(+)<br>" +
+        "and percent(%).</center></html>"
+    );
   }
 
   public void propertyChange(PropertyChangeEvent evt) {
