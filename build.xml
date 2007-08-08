@@ -25,7 +25,7 @@
 ################################################################################
  -->
 
-<project name="jbarcodebean" default="release">
+<project name="jbarcodebean" default="package">
 	<property name="target.dir" value="target"/>
 	<property name="target.src" value="${target.dir}/src"/>
 	<property name="target.bin" value="${target.dir}/bin"/>
@@ -94,8 +94,12 @@
 			      <include name="Examples.html"/>
 			</fileset>
 		</copy>
+		<antcall target="doc"/>
 		<jar destfile="${target.dir}/Demo.jar" manifest="misc/Demo.manifest">
 			<fileset dir="${target.bin}"/>
+			<fileset dir=".">
+				<include name="doc/**"/>
+			</fileset>
 		</jar>
 		<antcall target="clean"/>
 	</target>
@@ -116,6 +120,36 @@
 				<include name="Acme/jpm/Encoders/**.java"/>
 			</fileset>			
 		</javadoc>
+	</target>
+	<target name="package" depends="releasedemo">
+		<antcall target="doc"/>
+		<copy todir="${target.src}">
+			<fileset dir="src">
+	   			<include name="Acme/**"/>
+	   			<include name="jbarcodebean/**"/>
+	   			<include name="bardemo/**"/>
+			</fileset>
+		</copy>
+		<mkdir dir="${target.dir}/doc"/>
+		<copy todir="${target.dir}/doc">
+			<fileset dir="doc"/>
+		</copy>
+		<mkdir dir="${target.dir}/misc"/>
+		<copy todir="${target.dir}/misc">
+			<fileset dir="misc"/>
+		</copy>
+		<copy todir="${target.dir}">
+			<fileset dir=".">
+				<include name="build.xml"/>
+				<include name="changes.xml"/>
+				<include name="Makefile"/>
+				<include name="Readme.html"/>
+			</fileset>
+		</copy>
+		<delete file="${target.dir}/JBarcodeBean-1.1.2.tar"/>
+		<delete file="${target.dir}/JBarcodeBean-1.1.2.tar.gz"/>
+		<tar tarfile="${target.dir}/JBarcodeBean-1.1.2.tar" basedir="${target.dir}"/>
+		<gzip zipfile="${target.dir}/JBarcodeBean-1.1.2.tar.gz" src="${target.dir}/JBarcodeBean-1.1.2.tar"/>
 	</target>
 </project>
 
