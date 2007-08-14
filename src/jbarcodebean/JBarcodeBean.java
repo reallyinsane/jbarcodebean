@@ -122,6 +122,11 @@ import java.awt.image.*;
  */
 public class JBarcodeBean extends JComponent implements java.io.Serializable, Accessible {
 
+  /**
+   * The current version of JBarcodeBean.
+   */
+  private static final String VERSION   ="1.1.2";
+    
   // Property change constants
 
   /** Identifies a change in the <b>showText</b> property. */
@@ -753,5 +758,14 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     Acme.jpm.Encoders.GifEncoder encoder = new Acme.jpm.Encoders.GifEncoder(bi, out);
     encoder.encode();
   }
+  
+  /**
+   * Returns the version of this JBarcodeBean implementation.
+   * @return The version string in format: <i>major.minor[.micro]</i>
+   */
+  public static String getVersion() {
+      return VERSION;
+  }
+  
 }
 
