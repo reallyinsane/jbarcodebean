@@ -31,6 +31,14 @@ import java.beans.*;
  * @version 1.1
  */
 public class JBarcodeBeanBeanInfo extends SimpleBeanInfo {
+    
+    public BeanDescriptor getBeanDescriptor() {
+        BeanDescriptor bd = new BeanDescriptor(beanClass);
+        bd.setName("jbarcodebean.JBarcodeBean");
+        bd.setDisplayName("JBarcodeBean "+JBarcodeBean.getVersion());
+        bd.setShortDescription("JBarcodeBean is a JFC Swing-compatible JavaBeans component that lets you barcode-enable Java 2 enterprise applications.");
+        return bd;
+    }
 
   public java.awt.Image getIcon(int iconKind) {
     java.awt.Image img = null;
