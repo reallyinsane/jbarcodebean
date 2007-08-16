@@ -69,10 +69,10 @@ public class Code93 extends AbstractBarcodeStrategy {
         new CharacterCode('/',new byte[]{1,1,2,1,3,1},40),
         new CharacterCode('+',new byte[]{1,1,3,1,2,1},41),
         new CharacterCode('%',new byte[]{2,1,1,1,3,1},42),
-        new CharacterCode('$',new byte[]{1,2,1,2,2,1},43),
-        new CharacterCode('%',new byte[]{3,1,2,1,1,1},44),
-        new CharacterCode('/',new byte[]{3,1,1,1,2,1},45),
-        new CharacterCode('+',new byte[]{1,2,2,2,1,1},46),
+        new CharacterCode((char)43,new byte[]{1,2,1,2,2,1},43),
+        new CharacterCode((char)44,new byte[]{3,1,2,1,1,1},44),
+        new CharacterCode((char)45,new byte[]{3,1,1,1,2,1},45),
+        new CharacterCode((char)46,new byte[]{1,2,2,2,1,1},46),
         new CharacterCode('*',new byte[]{1,1,1,1,4,1},-1)
     };
 
@@ -142,7 +142,7 @@ public class Code93 extends AbstractBarcodeStrategy {
         for(int i=0;i<elements.length;i++){
             list.add(elements[i]);
         }
-        list.add(terminationBar);
+        list.add(list.size()-1,terminationBar);
         BarcodeElement[] allElements=(BarcodeElement[]) list.toArray(new BarcodeElement[list.size()]);
         return new EncodedBarcode(allElements, barcodeLabelText);
     }
