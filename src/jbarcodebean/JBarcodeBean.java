@@ -125,7 +125,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
   /**
    * The current version of JBarcodeBean.
    */
-  private static final String VERSION   ="1.1.2";
+  private static final String VERSION   ="$jbarcodebean.version$";
     
   // Property change constants
 
