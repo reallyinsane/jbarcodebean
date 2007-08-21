@@ -10,28 +10,180 @@
 ################################################################################
 #
 # the following targets can be used:
-# - "doc" creates the API documentation which will be saved in "doc" directory
-# - "release" compiles the source code of JBarcodeBean and creates
-#   JBarcodeBean.jar in "target" directory
-# - "releasedemo" compiles the source code of the demo package and creates
-#   Demo.jar in "target" directory
 #
-# the following targets are for internal use (you can use them too)
-# - "clean" deletes the "target/src" and "target/bin" directories
-# - "prepare" re-creates the "target/src" and "target/bin" directories
-# - "compile" compiles the source code of JBarcodeBean to "target/bin"
-# - "compiledemo" compiles the source code of the demo package to "target/bin"
 #
 ################################################################################
  -->
 
-<project name="jbarcodebean" default="package">
-	<property name="target.dir" value="target"/>
-	<property name="target.src" value="${target.dir}/src"/>
-	<property name="target.bin" value="${target.dir}/bin"/>
-	<!-- please change the path the location of j2ee.jar on your system -->
+<project name="jbarcodebean" default="release">
+	<!-- This property defines the version of the JBarcodeBean release -->
+	<property name="version" value="1.1.3"/>
+	<property name="target" value="target"/>
+	<property name="target.doc" value="${target}/doc"/>
+
+	<property name="target.bean" value="${target}/bean"/>
+	<property name="target.bean.src" value="${target.bean}/src"/>
+	<property name="target.bean.bin" value="${target.bean}/bin"/>
+	<property name="target.bean.lib" value="${target.bean}/lib"/>
+	<property name="target.demo" value="${target}/demo"/>
+	<property name="target.demo.src" value="${target.demo}/src"/>
+	<property name="target.demo.bin" value="${target.demo}/bin"/>
+	<property name="target.demo.lib" value="${target.demo}/lib"/>
+	<property name="target.release" value="${target}/release"/>
+	<property name="target.release.src" value="${target.release}/src"/>
+	<property name="target.release.doc" value="${target.release}/doc"/>
+	<property name="target.release.misc" value="${target.release}/misc"/>
+
 	<property name="J2EE" value="lib/j2ee.jar"/>
-	<target name="clean">
+	
+	<target name="bean.compile">
+		<path id="classpath.compile.bean">
+    		<pathelement location="${J2EE}"/>
+		</path>		
+		<delete dir="${target.bean.src}"/>
+		<delete dir="${target.bean.bin}"/>
+		<mkdir dir="${target.bean.src}"/>
+		<mkdir dir="${target.bean.bin}"/>
+		<copy todir="${target.bean.src}">
+			<fileset dir="src">
+	   			<include name="Acme/**"/>
+	   			<include name="jbarcodebean/**"/>
+			</fileset>
+		</copy>
+		<replace file="${target.bean.src}/jbarcodebean/JBarcodeBean.java" token="$jbarcodebean.version$" value="${version}"/>
+    	<javac destdir="${target.bean.bin}" target="1.1" source="1.1" optimize="true" debug="false" deprecation="false" srcdir="${target.bean.src}">
+    		<classpath refid="classpath.compile.bean"/>
+		</javac>		
+	</target>
+	
+	<target name="bean.package" depends="bean.compile">
+		<delete dir="${target.bean.lib}"/>
+		<mkdir dir="${target.bean.lib}"/>
+		<copy todir="${target.bean.bin}">
+			<fileset dir="misc">
+			      <include name="jbarcodebean*.gif"/>
+			</fileset>
+		</copy>
+		<jar destfile="${target.bean.lib}/JBarcodeBean.jar" manifest="misc/JBarcodeBean.manifest">
+			<fileset dir="${target.bean.bin}"/>
+		</jar>
+	</target>
+	
+	<target name="demo.compile" depends="bean.package">
+		<path id="classpath.compile.demo">
+    		<pathelement location="${J2EE}"/>
+    		<pathelement location="${target.bean.lib}/JBarcodeBean.jar"/>
+		</path>
+		<delete dir="${target.demo.src}"/>
+		<delete dir="${target.demo.bin}"/>
+		<mkdir dir="${target.demo.src}"/>
+		<mkdir dir="${target.demo.bin}"/>
+		
+		<copy todir="${target.demo.src}">
+			<fileset dir="src">
+	   			<include name="bardemo/**"/>
+			</fileset>
+		</copy>
+    	<javac destdir="${target.demo.bin}" target="1.1" source="1.1" optimize="true" debug="false" deprecation="false" srcdir="${target.demo.src}">
+    		<include name="bardemo/**"/>
+    		<classpath refid="classpath.compile.demo"/>
+		</javac>		
+	</target>
+	<target name="doc">
+		<delete dir="${target.doc}"/>
+		<mkdir dir="${target.doc}"/>
+		<javadoc overview="misc/overview.html" destdir="${target.doc}"
+			doctitle="JBarcodeBean 1.1 Javadocs"
+			windowtitle="JBarcodeBean 1.1 Javadocs"
+			group="JBarcodeBean Packages"
+			header="JBarcodeBean">
+			<bottom>
+				<![CDATA[ <center>JBarcodeBean - Copyright &copy; 2004, Dafydd Walters.</center> ]]>
+			</bottom>
+			<fileset dir="src">
+				<include name="jbarcodebean/**.java"/>
+				<include name="Acme/**.java"/>
+				<include name="Acme/jpm/Encoders/**.java"/>
+			</fileset>			
+		</javadoc>
+	</target>
+	
+	<target name="demo.package" depends="demo.compile,doc">
+		<delete dir="${target.demo.lib}"/>
+		<mkdir dir="${target.demo.lib}"/>
+		<copy todir="${target.demo.bin}/bardemo">
+			<fileset dir="misc">
+			      <include name="demoicon.gif"/>
+			      <include name="property_icon.gif"/>
+			      <include name="SimpleDemoScreenshot.gif"/>
+			      <include name="uml_diag.gif"/>
+			      <include name="JBarcodeBean.html"/>
+			      <include name="Examples.html"/>
+			</fileset>
+		</copy>
+		<jar destfile="${target.demo.lib}/Demo.jar" manifest="misc/Demo.manifest">
+			<fileset dir="${target.demo.bin}"/>
+			<fileset dir="${target.doc}"/>
+		</jar>
+	</target>	
+	
+	<target name="release" depends="demo.package">
+		<delete dir="${target.release.src}"/>
+		<delete dir="${target.release.doc}"/>
+		<delete dir="${target.release.misc}"/>
+		<mkdir dir="${target.release.src}"/>
+		<mkdir dir="${target.release.doc}"/>
+		<mkdir dir="${target.release.misc}"/>
+		<copy todir="${target.release.src}">
+			<fileset dir="src" />
+		</copy>		
+		<copy todir="${target.release.doc}">
+			<fileset dir="${target.doc}" />
+		</copy>		
+		<copy todir="${target.release.misc}">
+			<fileset dir="misc" />
+		</copy>		
+		<copy todir="${target.release}">
+			<fileset dir=".">
+				<include name="build.xml"/>
+				<include name="changes.xml"/>
+				<include name="Makefile"/>
+				<include name="Readme.html"/>
+			</fileset>
+		</copy>		
+		<copy todir="${target.release}">
+			<fileset dir="${target.bean.lib}" />
+		</copy>		
+		<copy todir="${target.release}">
+			<fileset dir="${target.demo.lib}" />
+		</copy>		
+		<tar tarfile="${target}/JBarcodeBean-${version}.tar" basedir="${target.release}"/>
+		<gzip zipfile="${target}/JBarcodeBean-${version}.tar.gz" src="${target}/JBarcodeBean-${version}.tar"/>
+		<delete dir="${target.bean}"/>
+		<delete dir="${target.demo}"/>
+		<delete dir="${target.doc}"/>
+		<delete dir="${target.release}"/>
+		
+	</target>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- property name="target.dir" value="target"/>
+	<property name="target.src" value="${target.dir}/src"/>
+	<property name="target.bin" value="${target.dir}/bin"/ -->
+	<!-- please change the path the location of j2ee.jar on your system -->
+	<!-- target name="clean">
 		<delete dir="${target.src}"/>
 		<delete dir="${target.bin}"/>
 	</target>
@@ -150,7 +302,7 @@
 		<delete file="${target.dir}/JBarcodeBean-1.1.2.tar.gz"/>
 		<tar tarfile="${target.dir}/JBarcodeBean-1.1.2.tar" basedir="${target.dir}"/>
 		<gzip zipfile="${target.dir}/JBarcodeBean-1.1.2.tar.gz" src="${target.dir}/JBarcodeBean-1.1.2.tar"/>
-	</target>
+	</target -->
 </project>
 
 <!-- 
