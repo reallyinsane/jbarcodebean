@@ -6,7 +6,15 @@
     <author>Matthias Hanisch</author>
   </properties>
   <body>
-     <release version="1.1.3" date="in SVN" description="none yet">
+     <release version="1.1.4" date="in SVN" description="none yet">
+      <action dev="mhanisch" type="add">
+        Barcode type "Code 93Extended" has been added.
+      </action>
+      <action dev="mhanisch" type="add">
+        Barcode type "Code 11" has been added.
+      </action>
+     </release>
+     <release version="1.1.3" date="2007/08/21" description="none yet">
       <action dev="mhanisch" type="add">
         Barcode type "Code 93" has been added.
       </action>
