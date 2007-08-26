@@ -45,16 +45,20 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
     private static final String CODE_39_2_1         = "Code 39 2:1";
     private static final String CODE_39_3_1         = "Code 39 3:1";
     private static final String CODE_128            = "Code 128";
-    private static final String CODE_93            = "Code 93";
+    private static final String CODE_93             = "Code 93";
+    private static final String CODE_93_EXTENDED    = "Code 93 Extended";
+    private static final String CODE_11             = "Code 11";
 
     public String[] getTags() {
         return new String[] {
+                        CODE_11,
                         CODE_128,
                         CODE_39_3_1,
                         CODE_39_2_1,
                         EXT_CODE_39_3_1,
                         EXT_CODE_39_2_1,
                         CODE_93,
+                        CODE_93_EXTENDED,
                         INTERLEAVED_25_3_1,
                         INTERLEAVED_25_2_1,
                         MSI_MOD_10_CHECK,
@@ -92,6 +96,10 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
             setValue(new Ean8());
         } else if (s.equals(CODE_93)) {
             setValue(new Code93());
+        } else if (s.equals(CODE_93_EXTENDED)) {
+            setValue(new Code93Extended());
+        } else if (s.equals(CODE_11)) {
+            setValue(new Code11());
         } else {
             // Default to Code 39
             setValue(new Code39());
@@ -139,6 +147,12 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
         } else if (s.getClass().equals(Code93.class)) {
             // EAN-8
             return CODE_93;
+        } else if (s.getClass().equals(Code93Extended.class)) {
+            // EAN-8
+            return CODE_93_EXTENDED;
+        } else if (s.getClass().equals(Code11.class)) {
+            // EAN-8
+            return CODE_11;
         } else {
             // Must set to something, so default to Code 39
             return "Code 39";
@@ -186,6 +200,12 @@ public class BarcodeStrategyEditor extends PropertyEditorSupport {
         } else if (s.getClass().equals(Code93.class)) {
             // EAN-8
             return "new jbarcodebean.Code93()";
+        } else if (s.getClass().equals(Code93Extended.class)) {
+            // EAN-8
+            return "new jbarcodebean.Code93Extended()";
+        } else if (s.getClass().equals(Code11.class)) {
+            // EAN-8
+            return "new jbarcodebean.Code11()";
         } else {
             // Must set to something, so default to Code 39
             return "new jbarcodebean.Code39()";
