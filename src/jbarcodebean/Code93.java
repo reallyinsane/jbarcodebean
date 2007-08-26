@@ -69,30 +69,43 @@ public class Code93 extends AbstractBarcodeStrategy {
         new CharacterCode('/',new byte[]{1,1,2,1,3,1},40),
         new CharacterCode('+',new byte[]{1,1,3,1,2,1},41),
         new CharacterCode('%',new byte[]{2,1,1,1,3,1},42),
-        new CharacterCode((char)43,new byte[]{1,2,1,2,2,1},43),
-        new CharacterCode((char)44,new byte[]{3,1,2,1,1,1},44),
-        new CharacterCode((char)45,new byte[]{3,1,1,1,2,1},45),
-        new CharacterCode((char)46,new byte[]{1,2,2,2,1,1},46),
+        new CharacterCode((char)1043,new byte[]{1,2,1,2,2,1},43),
+        new CharacterCode((char)1044,new byte[]{3,1,2,1,1,1},44),
+        new CharacterCode((char)1045,new byte[]{3,1,1,1,2,1},45),
+        new CharacterCode((char)1046,new byte[]{1,2,2,2,1,1},46),
         new CharacterCode('*',new byte[]{1,1,1,1,4,1},-1)
     };
 
     protected String augmentWithChecksum(String text) throws BarcodeException {
         int checksumC=0;
         int checksumK=0;
-        int weight=1;
+        int weightC=1;
+        int weightK=1;
         for(int i=text.length()-1;i>=0;i--){
             char c=text.charAt(i);
             CharacterCode cc=getCharacterCode(c);
-            checksumC+=cc.check*weight;
-            weight++;
-            checksumK+=cc.check*weight;
+            checksumC+=cc.check*weightC;
+            weightC++;
+            if(weightC>20){
+                weightC=1;
+            }
         }
         checksumC=checksumC%47;
         CharacterCode codeC=getCharacterCode(checksumC);
-        checksumK+=checksumC;
+        text+=codeC.character;
+        for(int i=text.length()-1;i>=0;i--){
+            char c=text.charAt(i);
+            CharacterCode cc=getCharacterCode(c);
+            checksumK+=cc.check*weightK;
+            weightK++;
+            if(weightK>15){
+                weightK=1;
+            }
+        }
         checksumK=checksumK%47;
         CharacterCode codeK=getCharacterCode(checksumK);
-        return text+codeC.character+codeK.character;
+        text+=codeK.character;
+        return text;
     }
 
     protected String getBarcodeLabelText(String text) {
