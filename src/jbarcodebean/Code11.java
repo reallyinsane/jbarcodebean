@@ -1,3 +1,24 @@
+/**
+ *  $Id$ 
+ *
+ *  This library is free software; you can redistribute it and/or modify it
+ *  under the terms of the GNU Lesser General Public License (LGPL) as
+ *  published by the Free Software Foundation; either version 3.0 of the
+ *  License, or (at your option) any later version.
+ *
+ *  This library is distributed in the hope that it will be useful, but
+ *  WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY of FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ *  Lesser General Public License for more details. 
+ */
+
+/**
+ * Title:        JBarcodeBean
+ * Description:  Barcode JavaBeans Component
+ * Copyright:    Copyright (C) 2004
+ * Company:      Matthias Hanisch
+ * @Version      1.1
+ */
 package jbarcodebean;
 
 
@@ -18,7 +39,6 @@ public class Code11 extends AbstractBarcodeStrategy {
         new CharacterCode('*',new byte[]{1,1,2,2,1,1},11),    
         new CharacterCode('$',new byte[]{0,1},12)};    
 
-    
     protected String augmentWithChecksum(String text) throws BarcodeException {
         int checksumC=0;
         int checksumK=0;
@@ -27,31 +47,28 @@ public class Code11 extends AbstractBarcodeStrategy {
         for(int i=text.length()-1;i>=0;i--){
             CharacterCode cc = getCharacterCode(text.charAt(i));
             checksumC+=cc.check*weightC;
-            checksumK+=cc.check*weightK;
             weightC++;
-            weightK++;
             if(weightC>10){
                 weightC=1;
             }
+        }
+        checksumC=checksumC%11;
+        CharacterCode codeC=getCharacterCode(checksumC);
+        text+=codeC.character;
+        for(int i=text.length()-1;i>=0;i--){
+            CharacterCode cc = getCharacterCode(text.charAt(i));
+            checksumK+=cc.check*weightK;
+            weightK++;
             if(weightK>9){
                 weightK=1;
             }
         }
-        checksumC=checksumC%11;
         checksumK=checksumK%11;
-        CharacterCode codeC=getCharacterCode(checksumC);
         CharacterCode codeK=getCharacterCode(checksumK);
         if(text.length()>=10){
-            text=text+codeC.character+codeK.character;
-        } else{
-            text=text+codeC.character;
+            text+=codeK.character;
         }
-        StringBuffer buf=new StringBuffer(text.length()+text.length()-1);
-        for(int i=0;i<text.length();i++){
-            buf.append(text.charAt(i));
-//            buf.append('$');
-        }
-        return buf.toString();
+        return text;
     }
 
     protected String getBarcodeLabelText(String text) {
