@@ -17,7 +17,7 @@
 
 <project name="jbarcodebean" default="release">
 	<!-- This property defines the version of the JBarcodeBean release -->
-	<property name="version" value="1.1.3"/>
+	<property name="version" value="1.1.4"/>
 	<property name="target" value="target"/>
 	<property name="target.doc" value="${target}/doc"/>
 
@@ -59,7 +59,7 @@
 	<target name="bean.package" depends="bean.compile">
 		<delete dir="${target.bean.lib}"/>
 		<mkdir dir="${target.bean.lib}"/>
-		<copy todir="${target.bean.bin}">
+		<copy todir="${target.bean.bin}/jbarcodebean">
 			<fileset dir="misc">
 			      <include name="jbarcodebean*.gif"/>
 			</fileset>
