@@ -592,11 +592,19 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     // also regard the clip the graphics object already has to avoid paint
     // outside the clip of the graphics. therefore we make an intersect of both
     // clips
-    Area areaOldClip=new Area(oldClip);
-    Rectangle newClip=new Rectangle(insets.left, insets.top,
+    Area areaOldClip = null;
+    Rectangle newClip = new Rectangle(insets.left, insets.top,
       d.width - insets.left - insets.right, d.height - insets.top - insets.bottom);
-    Area areaNewClip=new Area(newClip);
-    areaOldClip.intersect(areaNewClip);
+    Area areaNewClip = new Area(newClip);
+    if (oldClip != null)
+    {
+      areaOldClip = new Area(oldClip);
+      areaOldClip.intersect(areaNewClip);
+    }
+    else
+    {
+      areaOldClip = areaNewClip;
+    }
     g.setClip(areaOldClip);
 
     // Apply rotate and transale transform
