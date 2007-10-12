@@ -1,5 +1,5 @@
 /**
- * $Id$
+ * Servlet test example
  */
 
 package bardemo;
@@ -11,8 +11,6 @@ import jbarcodebean.*;
 
 /**
  * Servlet example code.
- *
- * @version 1.1
  */
 public class ServletTest extends HttpServlet {
 

@@ -1,5 +1,3 @@
-// $Id$
-
 package Acme.jpm.Encoders;
 
 import java.util.*;

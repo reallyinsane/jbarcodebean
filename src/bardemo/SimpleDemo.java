@@ -1,5 +1,5 @@
 /**
- * $Id$
+ * Application example
  */
 
 package bardemo;
@@ -12,8 +12,6 @@ import jbarcodebean.*;
 
 /**
  * Application example code.
- *
- * @version 1.1
  */
 public class SimpleDemo extends JFrame {
 

@@ -1,6 +1,4 @@
 /**
- *  $Id$ 
- *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
  *  published by the Free Software Foundation; either version 3.0 of the
@@ -17,7 +15,6 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
  */
 package jbarcodebean;
 
@@ -25,8 +22,6 @@ package jbarcodebean;
  * Interface which defines the barcode strategy for any
  * given type of barcode.  Classes that implement this interface exist for each
  * of the barcode types such as Code39, Interleaved25, etc.
- *
- * @version 1.1
  */
 public interface BarcodeStrategy {
 

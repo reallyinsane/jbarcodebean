@@ -1,6 +1,4 @@
 /**
- *  $Id$ 
- *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
  *  published by the Free Software Foundation; either version 3.0 of the
@@ -17,15 +15,12 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
  */
 package jbarcodebean;
 
 /**
  * This class, which implements the {@link BarcodeStrategy} interface,
  * knows how to encode the MSI barcode type.
- *
- * @version 1.1
  */
 public class MSI extends AbstractBarcodeStrategy implements java.io.Serializable {
 

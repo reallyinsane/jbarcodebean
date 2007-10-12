@@ -1,6 +1,4 @@
 /**
- *  $Id$ 
- *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
  *  published by the Free Software Foundation; either version 3.0 of the
@@ -17,7 +15,6 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
  */
 package jbarcodebean;
 
@@ -25,8 +22,6 @@ package jbarcodebean;
  * This class represents the bars, spaces and caption (text) that make up a
  * fully encoded barcode.  The {@link BarcodeStrategy#encode encode} method
  * of {@link BarcodeStrategy} returns an instance of this class.
- *
- * @version 1.1
  */
 public class EncodedBarcode implements java.io.Serializable {
 

@@ -1,6 +1,4 @@
 /**
- *  $Id$ 
- *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
  *  published by the Free Software Foundation; either version 3.0 of the
@@ -17,14 +15,11 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
  */
 package jbarcodebean;
 
 /**
  * Base class for Code39 variants.
- *
- * @version 1.1
  */
 public abstract class BaseCode39 extends AbstractBarcodeStrategy {
 

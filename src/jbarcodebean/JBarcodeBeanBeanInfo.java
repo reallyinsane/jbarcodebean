@@ -1,6 +1,4 @@
 /**
- *  $Id$ 
- *
  *  This library is free software; you can redistribute it and/or modify it
  *  under the terms of the GNU Lesser General Public License (LGPL) as
  *  published by the Free Software Foundation; either version 3.0 of the
@@ -17,7 +15,6 @@
  * Description:  Barcode JavaBeans Component
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
- * @Version      1.1
  */
 package jbarcodebean;
 
@@ -27,8 +24,6 @@ import java.beans.*;
  * This class is an implementation of the <tt><b>java.beans.BeanInfo</b></tt>
  * interface, that provides GUI Builders with information about
  * {@link JBarcodeBean}.
- *
- * @version 1.1
  */
 public class JBarcodeBeanBeanInfo extends SimpleBeanInfo {
     
