@@ -22,6 +22,11 @@ import java.util.ArrayList;
 
 public class Code93 extends AbstractBarcodeStrategy {
     
+    protected static final char SHIFT_DOLLAR  =(char)1043;
+    protected static final char SHIFT_PERCENT =(char)1044;
+    protected static final char SHIFT_SLASH   =(char)1045;
+    protected static final char SHIFT_PLUS    =(char)1046;    
+    
     static final CharacterCode[] codes={
         new CharacterCode('0',new byte[]{1,3,1,1,1,2},0),
         new CharacterCode('1',new byte[]{1,1,1,2,1,3},1),
@@ -66,10 +71,10 @@ public class Code93 extends AbstractBarcodeStrategy {
         new CharacterCode('/',new byte[]{1,1,2,1,3,1},40),
         new CharacterCode('+',new byte[]{1,1,3,1,2,1},41),
         new CharacterCode('%',new byte[]{2,1,1,1,3,1},42),
-        new CharacterCode((char)1043,new byte[]{1,2,1,2,2,1},43),
-        new CharacterCode((char)1044,new byte[]{3,1,2,1,1,1},44),
-        new CharacterCode((char)1045,new byte[]{3,1,1,1,2,1},45),
-        new CharacterCode((char)1046,new byte[]{1,2,2,2,1,1},46),
+        new CharacterCode(SHIFT_DOLLAR,new byte[]{1,2,1,2,2,1},43),
+        new CharacterCode(SHIFT_PERCENT,new byte[]{3,1,2,1,1,1},44),
+        new CharacterCode(SHIFT_SLASH,new byte[]{3,1,1,1,2,1},45),
+        new CharacterCode(SHIFT_PLUS,new byte[]{1,2,2,2,1,1},46),
         new CharacterCode('*',new byte[]{1,1,1,1,4,1},-1)
     };
 

@@ -20,11 +20,6 @@ package jbarcodebean;
 
 public class Code93Extended extends Code93 {
     
-    private static final char SHIFT_DOLLAR  =(char)1043;
-    private static final char SHIFT_PERCENT =(char)1044;
-    private static final char SHIFT_SLASH   =(char)1045;
-    private static final char SHIFT_PLUS    =(char)1046;
-    
     static class MappedCode{
         char character;
         String encoded;
