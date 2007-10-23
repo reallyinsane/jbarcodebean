@@ -120,7 +120,9 @@ import java.awt.image.*;
 public class JBarcodeBean extends JComponent implements java.io.Serializable, Accessible {
 
   /**
-   * The current version of JBarcodeBean.
+   * The current version of JBarcodeBean. Please do not change the value if the
+   * constant as it will be replaced during the build process. (Currently an
+   * ANT script)
    */
   private static final String VERSION   ="$jbarcodebean.version$";
     
