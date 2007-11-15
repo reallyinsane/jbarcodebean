@@ -2,7 +2,7 @@
  * Servlet test example
  */
 
-package bardemo;
+package net.sourceforge.jbarcodebean.demo;
 
 import javax.servlet.*;
 import javax.servlet.http.*;

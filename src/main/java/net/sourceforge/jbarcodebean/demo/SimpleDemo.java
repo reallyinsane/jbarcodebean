@@ -2,7 +2,7 @@
  * Application example
  */
 
-package bardemo;
+package net.sourceforge.jbarcodebean.demo;
 
 import java.awt.*;
 import java.awt.event.*;

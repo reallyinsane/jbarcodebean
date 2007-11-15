@@ -16,7 +16,7 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package bardemo;
+package net.sourceforge.jbarcodebean.demo;
 
 import javax.swing.*;
 import java.awt.*;
