@@ -16,7 +16,9 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Matthias Hanisch
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
+
+import net.sourceforge.jbarcodebean.BarcodeException;
 
 public class Code93Extended extends Code93 {
     

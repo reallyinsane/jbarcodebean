@@ -16,13 +16,28 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.font.*;
 import javax.accessibility.*;
+
+import net.sourceforge.jbarcodebean.model.BarcodeStrategy;
+import net.sourceforge.jbarcodebean.model.Codabar;
+import net.sourceforge.jbarcodebean.model.Codabar_2to1;
+import net.sourceforge.jbarcodebean.model.Code128;
+import net.sourceforge.jbarcodebean.model.Code39;
+import net.sourceforge.jbarcodebean.model.Code39_2to1;
+import net.sourceforge.jbarcodebean.model.Ean13;
+import net.sourceforge.jbarcodebean.model.Ean8;
+import net.sourceforge.jbarcodebean.model.ExtendedCode39;
+import net.sourceforge.jbarcodebean.model.ExtendedCode39_2to1;
+import net.sourceforge.jbarcodebean.model.Interleaved25;
+import net.sourceforge.jbarcodebean.model.Interleaved25_2to1;
+import net.sourceforge.jbarcodebean.model.MSI;
+
 import java.io.*;
 import java.awt.image.*;
 

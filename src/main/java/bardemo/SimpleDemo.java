@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.*;
 import javax.swing.*;
+
+import net.sourceforge.jbarcodebean.JBarcodeBean;
+import net.sourceforge.jbarcodebean.model.Code128;
 import jbarcodebean.*;
 
 /**

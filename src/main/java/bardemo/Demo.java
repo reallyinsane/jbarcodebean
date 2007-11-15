@@ -29,6 +29,9 @@ import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.*;
 
 import javax.swing.table.*;
+
+import net.sourceforge.jbarcodebean.JBarcodeBean;
+
 import java.beans.*;
 import java.lang.reflect.*;
 import java.io.*;

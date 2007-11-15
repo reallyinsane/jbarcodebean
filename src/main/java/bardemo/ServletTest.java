@@ -6,6 +6,10 @@ package bardemo;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
+
+import net.sourceforge.jbarcodebean.JBarcodeBean;
+import net.sourceforge.jbarcodebean.model.ExtendedCode39;
+
 import java.io.*;
 import jbarcodebean.*;
 

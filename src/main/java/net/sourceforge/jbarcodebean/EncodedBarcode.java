@@ -16,7 +16,9 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean;
+
+import net.sourceforge.jbarcodebean.model.BarcodeStrategy;
 
 /**
  * This class represents the bars, spaces and caption (text) that make up a

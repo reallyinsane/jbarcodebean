@@ -16,34 +16,19 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
 
 /**
  * This class, which implements the {@link BarcodeStrategy} interface,
- * knows how to encode the 3:1 (wide)
- * variant of the Code 3 of 9 barcode type.
+ * knows how to encode the 2:1 (narrow)
+ * variant of the Extended Code 3 of 9 barcode type.
  */
-public class Code39 extends BaseCode39 implements java.io.Serializable {
+public class ExtendedCode39_2to1 extends ExtendedCode39 implements java.io.Serializable {
 
   /**
-   * This implementation of <tt>getCodes</tt> returns {@link BaseCode39#codes}.
+   * This implementation of <tt>getCodes</tt> returns {@link BaseCode39#codes2to1}.
    */
   protected CharacterCode[] getCodes() {
-    return BaseCode39.codes;
-  }
-
-  /**
-   * Returns an UPPER CASE version of the <tt>text</tt> parameter.
-   */
-  protected String preprocess(String text) {
-    return text.toUpperCase();
-  }
-
-  /**
-   * Returns an UPPER CASE version of the <tt>text</tt> parameter.
-   */
-  protected String getBarcodeLabelText(String text) {
-    return text.toUpperCase();
+    return BaseCode39.codes2to1;
   }
 }
-

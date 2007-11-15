@@ -13,7 +13,7 @@
  *  Copyright (C) 2004 Jose Gaonac'h.
  */
 
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
 
 /**
  * EAN-8 barcode implementation.

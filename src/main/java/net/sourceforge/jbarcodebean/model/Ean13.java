@@ -13,7 +13,9 @@
  *  Copyright (C) 2004 Jose Gaonac'h.
  */
 
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
+
+import net.sourceforge.jbarcodebean.BarcodeException;
 
 
 /**

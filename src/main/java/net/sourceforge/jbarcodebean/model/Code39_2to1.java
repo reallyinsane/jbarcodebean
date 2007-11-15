@@ -16,19 +16,19 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
 
 /**
- * Exception class for barcode encoding errors.
+ * This class, which implements the {@link BarcodeStrategy} interface,
+ * knows how to encode the
+ * 2:1 (narrow) variant of the Code 3 of 9 barcode type.
  */
-public class BarcodeException extends Exception {
+public class Code39_2to1 extends Code39 implements java.io.Serializable {
 
-  public BarcodeException() {
-    super();
+  /**
+   * This implementation of <tt>getCodes</tt> returns {@link BaseCode39#codes2to1}.
+   */
+  protected CharacterCode[] getCodes() {
+    return BaseCode39.codes2to1;
   }
-
-  public BarcodeException(String text) {
-    super(text);
-  }
-
 }

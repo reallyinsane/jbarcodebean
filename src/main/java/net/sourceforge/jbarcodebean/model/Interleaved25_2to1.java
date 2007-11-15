@@ -16,7 +16,7 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
 
 /**
  * This class, which implements the {@link BarcodeStrategy} interface,

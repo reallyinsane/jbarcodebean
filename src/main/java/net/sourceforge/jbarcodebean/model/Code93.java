@@ -16,9 +16,14 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Matthias Hanisch
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean.model;
 
 import java.util.ArrayList;
+
+import net.sourceforge.jbarcodebean.BarcodeElement;
+import net.sourceforge.jbarcodebean.BarcodeException;
+import net.sourceforge.jbarcodebean.EncodedBarcode;
+
 
 public class Code93 extends AbstractBarcodeStrategy {
     

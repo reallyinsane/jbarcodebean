@@ -16,19 +16,20 @@
  * Copyright:    Copyright (C) 2004
  * Company:      Dafydd Walters
  */
-package jbarcodebean;
+package net.sourceforge.jbarcodebean;
 
 /**
- * This class, which implements the {@link BarcodeStrategy} interface,
- * knows how to encode the
- * 2:1 (narrow) variant of the Code 3 of 9 barcode type.
+ * Class representing a single barcode module (bar or space).
  */
-public class Code39_2to1 extends Code39 implements java.io.Serializable {
+public class BarcodeElement implements java.io.Serializable {
+  /**
+   * The width of the element expressed as a multiple of the narrowest module (bar/space) width.
+   */
+  public byte width;
 
   /**
-   * This implementation of <tt>getCodes</tt> returns {@link BaseCode39#codes2to1}.
+   * <tt>true</tt> = bar (black), <tt>false</tt> = space (white).
    */
-  protected CharacterCode[] getCodes() {
-    return BaseCode39.codes2to1;
-  }
+  public boolean bar;
 }
+
