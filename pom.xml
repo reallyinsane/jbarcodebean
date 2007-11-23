@@ -3,7 +3,39 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.sourceforge.jbarcodebean</groupId>
   <artifactId>jbarcodebean</artifactId>
-  <version>0.0.1</version>
+  <name>JBarcodeBean</name>
+  <version>1.2.0</version>
+  
+<developers>
+    <developer>
+      <id>dwalters</id>
+      <name>Dafydd Walters</name>
+      <email>dwalters AT users DOT sourceforge DOT net</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+    <developer>
+      <id>mhanisch</id>
+      <name>Matthias Hanisch</name>
+      <email>mhanisch AT users DOT sourceforge DOT net</email>
+      <roles>
+        <role>architect</role>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+    </developer>
+  </developers>  
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License (LGPL), version 3.0</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
   <dependencies>
     <dependency>
       <groupId>servletapi</groupId>
@@ -11,5 +43,64 @@
       <version>2.4</version>
     </dependency>
   </dependencies>
+    <scm>
+    <connection>scm:svn:https://jbarcodebean.svn.sourceforge.net/svnroot/jbarcodebean/branches/maven/jbarcodebean</connection>
+    <developerConnection>scm:svn:https://jbarcodebean.svn.sourceforge.net/svnroot/jbarcodebean/branches/maven/jbarcodebean</developerConnection>
+    <url>https://jbarcodebean.svn.sourceforge.net/svnroot/jbarcodebean/branches/maven/jbarcodebean</url>
+  </scm>
+    <reporting>
+    <plugins>
+      <plugin>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <linksource>true</linksource>
+          <aggregate>true</aggregate>
+          <keywords>true</keywords>
+          <links>
+            <link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
+            <link>http://testng.org/javadocs/</link>
+            <link>http://jakarta.apache.org/commons/logging/apidocs/</link>
+          </links>
+          <tags>
+            <tag>
+              <name>todo</name>
+              <placement>a</placement>
+              <head>This needs to be done:</head>
+            </tag>
+          </tags>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changes-plugin</artifactId>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>changes-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
+        <configuration>
+          <issueLinkTemplate>http://sourceforge.net/support/tracker.php?aid=%ISSUE%</issueLinkTemplate>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+        <version>2.0-beta-1</version>
+      </plugin>
+    </plugins>
+  </reporting>
 </project>
 

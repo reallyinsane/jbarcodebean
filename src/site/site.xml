@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="JBarcodeBean">
+
+  <body>
+
+    <menu name="JBarcodeBean">
+      <item name="Introduction" href="index.html"/>
+    </menu>
+    <menu name="Samples">
+    </menu>
+
+    <menu ref="reports"/>
+  </body>
+</project>
