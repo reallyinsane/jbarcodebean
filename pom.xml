@@ -4,8 +4,20 @@
   <groupId>net.sourceforge.jbarcodebean</groupId>
   <artifactId>jbarcodebean</artifactId>
   <name>JBarcodeBean</name>
-  <version>1.2.0</version>
-  
+  <version>1.2.0-SNAPSHOT</version>
+  <description>
+    JBarcodeBean is a JFC Swing-compatible JavaBeans component that lets you barcode-enable Java enterprise applications.
+  </description>
+  <url>http://jbarcodebean.sourceforge.net/</url>
+  <issueManagement>
+    <system>SourceForge</system>
+    <url>http://sourceforge.net/tracker/?group_id=99480</url>
+  </issueManagement>
+  <inceptionYear>2004</inceptionYear>
+  <organization>
+    <name>The JBarcodeBean project</name>
+    <url>http://jbarcodebean.sourceforge.net/</url>
+  </organization>
 <developers>
     <developer>
       <id>dwalters</id>
@@ -102,5 +114,22 @@
       </plugin>
     </plugins>
   </reporting>
+  <distributionManagement>
+    <repository>
+      <id>sourceforge</id>
+      <name>SourceForge Final Repository</name>
+      <url>sftp://shell.sourceforge.net/home/groups/j/jb/jbarcodebean/htdocs/m2-release</url>
+    </repository>
+    <snapshotRepository>
+      <id>sourceforge</id>
+      <name>SourceForge Snapshot Repository</name>
+      <url>sftp://shell.sourceforge.net//home/groups/j/jb/jbarcodebean/htdocs/m2-snapshot</url>
+    </snapshotRepository>
+    <site>
+      <id>sourceforge</id>
+      <name>Website for JBarcodeBean on SourceForge</name>
+      <url>sftp://mhanisch@shell.sourceforge.net//home/groups/j/jb/jbarcodebean/htdocs/site</url>
+    </site>
+  </distributionManagement>  
 </project>
 
