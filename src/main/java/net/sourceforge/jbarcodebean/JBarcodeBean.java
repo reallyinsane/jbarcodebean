@@ -21,7 +21,6 @@ package net.sourceforge.jbarcodebean;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.*;
-import java.awt.font.*;
 import javax.accessibility.*;
 
 import net.sourceforge.jbarcodebean.model.BarcodeStrategy;
@@ -755,39 +754,19 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
   }
 
   /**
-   * <p>
-   * Encodes the barcode into an <tt>OutputStream</tt> as a GIF image.
-   * <p>
-   * <b>Note:</b> Borders and insets are not rendered, but if these properties are set
-   * on the component, the size of the resulting GIF will be increased accordingly
-   * with blank space around the barcode image the same color as the
-   * {@link #getBarcodeBackground barcodeBackground} property.
-   */
-  public void gifEncode(OutputStream out) throws IOException {
-    encode();
-    recalculateSizes();
-    Color oldBackground = getBackground();
-    setBackground(barcodeBackground);
-    BufferedImage bi = (BufferedImage)createImage(preferredSize.width, preferredSize.height);
-    if (bi == null) {
-      // We are running server-side or component has not yet been displayed,
-      // so a different method is needed to create the buffered image.
-      bi = new BufferedImage(preferredSize.width, preferredSize.height, BufferedImage.TYPE_INT_RGB);
-    }
-    Graphics2D g = bi.createGraphics();
-    doPaint(g, new Dimension(bi.getWidth(), bi.getHeight()), new Insets(0,0,0,0));
-    setBackground(oldBackground);
-    Acme.jpm.Encoders.GifEncoder encoder = new Acme.jpm.Encoders.GifEncoder(bi, out);
-    encoder.encode();
-  }
-  
-  /**
    * Returns the version of this JBarcodeBean implementation.
    * @return The version string in format: <i>major.minor[.micro]</i>
    */
   public static String getVersion() {
       return VERSION;
   }
-  
+
+    public void draw(BufferedImage image) {
+        encode();
+        recalculateSizes();
+        Graphics2D g = image.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        doPaint(g, new Dimension(image.getWidth(), image.getHeight()), new Insets(0, 0, 0, 0));
+    }  
 }
 
