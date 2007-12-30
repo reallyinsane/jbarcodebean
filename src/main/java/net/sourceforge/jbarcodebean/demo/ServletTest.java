@@ -4,37 +4,42 @@
 
 package net.sourceforge.jbarcodebean.demo;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import javax.imageio.ImageIO;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.sourceforge.jbarcodebean.JBarcodeBean;
 import net.sourceforge.jbarcodebean.model.ExtendedCode39;
-
-import java.io.*;
-import jbarcodebean.*;
 
 /**
  * Servlet example code.
  */
 public class ServletTest extends HttpServlet {
 
-  JBarcodeBean bb;
+    private JBarcodeBean bb;
 
-  public void init(ServletConfig conf) throws ServletException {
-    super.init(conf);
-    bb = new JBarcodeBean();
-    bb.setCodeType(new ExtendedCode39());
-    bb.setShowText(true);
-  }
+    public void init(ServletConfig conf) throws ServletException {
+        super.init(conf);
+        bb = new JBarcodeBean();
+        bb.setCodeType(new ExtendedCode39());
+        bb.setShowText(true);
+    }
 
-  public void doGet(HttpServletRequest req, HttpServletResponse resp)
-    throws ServletException, IOException {
+    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-    resp.setContentType("image/gif");
-    OutputStream out = resp.getOutputStream();
-
-    bb.setCode(req.getParameter("code"));
-    bb.gifEncode(out);
-  }
+        resp.setContentType("image/png");
+        OutputStream out = resp.getOutputStream();
+        bb.setCode(req.getParameter("code"));
+        BufferedImage img=bb.draw(null);
+        ImageIO.write(img, "png", out);
+        out.flush();
+    }
 
 }
