@@ -1,0 +1,45 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Samples of the supported barcode types
+
+  Codabar
+
+[images/codabar.png] Codabar
+  
+  Code128
+
+[images/code128.png] Code128
+  
+  Code11
+
+[images/code11.png] Code11
+  
+  Interleaved 2 of 5 (wide)
+
+[images/interleaved25.png] Interleaved 2 of 5 (wide)
+  
+  Interleaved 2 of 5 (narrow)
+
+[images/interleaved25_2to1.png] Interleaved 2 of 5 (narrow)
+  
+  Code39 (wide)
+
+[images/code39.png] Code39 (wide)
+  
+  Code39 (narrow)
+
+[images/code39_2to1.png] Code39 (narrow)
+  
+  Code39 Extended (wide)
+
+[images/extendedcode39.png] Code39 Extended (wide)
+  
+  Code39 Extended (narrow)
+
+[images/extendedcode39_2to1.png] Code39 Extended (narrow)
+                                  

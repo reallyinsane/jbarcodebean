@@ -6,14 +6,26 @@
     <logo name="Build with Maven 2" href="http://maven.apache.org" img="images/logos/maven-feather.png"/>
   </poweredBy>
   <publishDate format="dd MMM yyyy"/>
+  
   <body>
     <links>
       <item name="JBarcodeBean" href="http://jbarcodebean.sourceforge.net/"/>
     </links>
     <menu name="JBarcodeBean">
       <item name="Introduction" href="index.html"/>
+      <item name="Downloads" href="download.html"/>
+      <item name="Samples" href="samples.html"/>
     </menu>
-    <menu name="Samples">
+    <menu name="Barcode types">
+    	<item name="Codabar" href="barcodes/codabar.html"/>
+    	<item name="Code11" href="barcodes/code11.html"/>
+    	<item name="Code128" href="barcodes/code128.html"/>
+    	<item name="Code39" href="barcodes/code39.html"/>
+    	<item name="Code93" href="barcodes/code93.html"/>
+    	<item name="Ean13" href="barcodes/ean13.html"/>
+    	<item name="Ean8" href="barcodes/ean8.html"/>
+    	<item name="Interleaved 2 of 5" href="barcodes/interleaved25.html"/>
+    	<item name="MSI" href="barcodes/msi.html"/>
     </menu>
 
     <menu ref="reports"/>

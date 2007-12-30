@@ -1,0 +1,18 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+MSI
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/MSI.html}net.sourceforge.jbarcodebean.model.MSI}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | Digits only                                         |
+*-----------------+-----------------------------------------------------+
+|Checksum         | mandantory                                          |
+*-----------------+-----------------------------------------------------+
+
+[../images/msi.png]

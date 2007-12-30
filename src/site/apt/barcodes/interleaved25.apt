@@ -1,0 +1,38 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Interleaved 2 of 5
+
+  JBarcodeBean supports two versions of the <Interleaved 2 of5> barcode.
+
+* Wide version (3:1)
+
+  For the wide version the ratio wide:narrow is 3:1.
+ 
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Interleaved25.html}net.sourceforge.jbarcodebean.model.Interleaved25}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | Digits only                                         |
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                            |
+*-----------------+-----------------------------------------------------+
+
+[../images/interleaved25.png]
+
+* Narrow version (2:1)
+
+  For the wide version the ratio wide:narrow is 2:1.
+ 
+*-----------------+------------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Interleaved25_2to1.html}net.sourceforge.jbarcodebean.model.Interleaved25_2to1}} |
+*-----------------+------------------------------------------------------+
+|Valid characters | Digits only                                          |
+*-----------------+------------------------------------------------------+
+|Checksum         | optional                                             |
+*-----------------+------------------------------------------------------+
+
+[../images/interleaved25_2to1.png]

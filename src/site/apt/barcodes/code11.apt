@@ -1,0 +1,18 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Code11
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Code11.html}net.sourceforge.jbarcodebean.model.Code11}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | Digits, <->                                         |
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                            |
+*-----------------+-----------------------------------------------------+
+
+[../images/code11.png]

@@ -1,0 +1,18 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Code128
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Code128.html}net.sourceforge.jbarcodebean.model.Code128}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | ASCII character set (0 to 127 decimal)              |
+*-----------------+-----------------------------------------------------+
+|Checksum         | mandatory                                           |
+*-----------------+-----------------------------------------------------+
+
+[../images/code128.png]

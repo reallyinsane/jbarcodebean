@@ -1,0 +1,18 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Codabar
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Codabar.html}net.sourceforge.jbarcodebean.model.Codabar}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | Digits, <->, <$>, <:>, </>, <.>, <+>                |
+*-----------------+-----------------------------------------------------+
+|Checksum         | no                                                  |
+*-----------------+-----------------------------------------------------+
+
+[../images/codabar.png]

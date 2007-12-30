@@ -1,0 +1,58 @@
+                                    ------
+                                    JBarcodeBean
+                                    ------
+                                    Matthias Hanisch
+                                    ------
+                                     26. Nov 2007
+
+Code39
+
+  JBarcodeBean supports four versions of the <Code39> barcode.
+  
+* Code39 wide version (3:1)
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Code39.html}net.sourceforge.jbarcodebean.model.Code39}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | digits, uppcase characters A-Z, <->, <.>, <*>, <$>, </>, <+>, <%>, <SPACE>|
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                            |
+*-----------------+-----------------------------------------------------+
+
+[../images/code39.png]
+
+* Code39 narrow version (2:1)
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/Code39_2to1.html}net.sourceforge.jbarcodebean.model.Code39_2to1}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | digits, uppcase characters A-Z, <->, <.>, <*>, <$>, </>, <+>, <%>, <SPACE>|
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                            |
+*-----------------+-----------------------------------------------------+
+
+[../images/code39_2to1.png]
+
+* Code39 Extended wide version (3:1)
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/ExtendedCode39.html}net.sourceforge.jbarcodebean.model.ExtendedCode39}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | ASCII character set (0 to 127 decimal)              |
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                           |
+*-----------------+-----------------------------------------------------+
+
+[../images/extendedcode39.png]
+
+* Code39 Extended wide version (3:1)
+
+*-----------------+-----------------------------------------------------+
+|Strategy class   | {{{./apidocs/net/sourceforge/jbarcodebean/model/ExtendedCode39_2to1.html}net.sourceforge.jbarcodebean.model.ExtendedCode39_2to1}} |
+*-----------------+-----------------------------------------------------+
+|Valid characters | ASCII character set (0 to 127 decimal)              |
+*-----------------+-----------------------------------------------------+
+|Checksum         | optional                                           |
+*-----------------+-----------------------------------------------------+
+
+[../images/extendedcode39_2to1.png]
