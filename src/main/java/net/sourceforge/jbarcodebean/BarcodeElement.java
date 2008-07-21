@@ -22,14 +22,26 @@ package net.sourceforge.jbarcodebean;
  * Class representing a single barcode module (bar or space).
  */
 public class BarcodeElement implements java.io.Serializable {
-  /**
-   * The width of the element expressed as a multiple of the narrowest module (bar/space) width.
-   */
-  public byte width;
+	public static final int TYPE_BAR = 1;
+	public static final int TYPE_SPACE = 0;
+	/**
+	 * The width of the element expressed as a multiple of the narrowest module
+	 * (bar/space) width.
+	 */
+	private final int width;
 
-  /**
-   * <tt>true</tt> = bar (black), <tt>false</tt> = space (white).
-   */
-  public boolean bar;
+	private final int type;
+
+	public BarcodeElement(int type, int width) {
+		this.type = type;
+		this.width = width;
+	}
+
+	public int getWidth() {
+		return this.width;
+	}
+
+	public int getType() {
+		return this.type;
+	}
 }
-

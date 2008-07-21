@@ -138,7 +138,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
      * constant as it will be replaced during the build process. (Currently an
      * ANT script)
      */
-    private static final String VERSION   ="$jbarcodebean.version$";
+    private static final String VERSION   ="${jbarcodebean.version}";
 
     // Property change constants
 
@@ -628,14 +628,14 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         // Draw barcode
         if (encoded != null) {
             for(int i = 0, x = (d.width - barcodeWidth) / 2; i < encoded.elements.length; i++) {
-                if (encoded.elements[i].bar) {
+                if (encoded.elements[i].getType()==BarcodeElement.TYPE_BAR) {
                     // bar
                     g.setColor(getForeground());
                 } else {
                     // space
                     g.setColor(barcodeBackground);
                 }
-                int barWidth = encoded.elements[i].width * narrowestBarWidth;
+                int barWidth = encoded.elements[i].getWidth() * narrowestBarWidth;
                 g.fillRect(x, barcodeTop, barWidth, barcodeHeight);
                 x += barWidth;
             }
@@ -713,7 +713,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
             labelWidth = fm.stringWidth(encoded.barcodeLabelText);
 
             for(int i = 0; i < encoded.elements.length; i++) {
-                barcodeWidth += encoded.elements[i].width * narrowestBarWidth;
+                barcodeWidth += encoded.elements[i].getWidth() * narrowestBarWidth;
             }
         } else if (!encodeError.equals("")) {
             // error message only

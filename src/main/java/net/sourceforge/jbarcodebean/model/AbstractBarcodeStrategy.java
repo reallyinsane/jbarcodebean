@@ -174,9 +174,7 @@ public abstract class AbstractBarcodeStrategy implements BarcodeStrategy {
     BarcodeElement[] elements = new BarcodeElement[size];
 
     // Margin
-    elements[0] = new BarcodeElement();
-    elements[0].bar = false;
-    elements[0].width = getMarginWidth();
+    elements[0] = new BarcodeElement(BarcodeElement.TYPE_SPACE, getMarginWidth());
 
     int len = text.length();
     int j = 1;
@@ -187,9 +185,9 @@ public abstract class AbstractBarcodeStrategy implements BarcodeStrategy {
         throw new BarcodeException("Invalid character in barcode");
       }
       for (int k = 0; k < cc.widths.length; k++) {
-        elements[j] = new BarcodeElement();
-        elements[j].width = cc.widths[k];
-        elements[j].bar = ((j % 2) == 0) ? false : true;
+        int width = cc.widths[k];
+        int type  = ((j % 2) == 0) ? BarcodeElement.TYPE_SPACE : BarcodeElement.TYPE_BAR;
+        elements[j] = new BarcodeElement(type, width);
         if (isInterleaved() && ch != getStartSentinel() && ch != getStopSentinel()) {
           j += 2;
         } else {
@@ -205,9 +203,7 @@ public abstract class AbstractBarcodeStrategy implements BarcodeStrategy {
       }
     }
 
-    elements[j] = new BarcodeElement();
-    elements[j].bar = false;
-    elements[j].width = getMarginWidth();
+    elements[j] = new BarcodeElement(BarcodeElement.TYPE_SPACE, getMarginWidth());
     j++;
 
     if (j != size) {

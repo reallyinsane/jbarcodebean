@@ -155,9 +155,7 @@ public class Code93 extends AbstractBarcodeStrategy {
         EncodedBarcode ebc=super.encode(textToEncode, checked);
         BarcodeElement[] elements = ebc.elements;
         String barcodeLabelText = ebc.barcodeLabelText;
-        BarcodeElement terminationBar=new BarcodeElement();
-        terminationBar.width=1;
-        terminationBar.bar=true;
+        BarcodeElement terminationBar=new BarcodeElement(BarcodeElement.TYPE_BAR, 1);
         ArrayList list=new ArrayList();
         for(int i=0;i<elements.length;i++){
             list.add(elements[i]);
