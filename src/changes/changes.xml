@@ -14,7 +14,7 @@
     	<action dev="mhanisch" type="add">Rendering into buffered images added.</action>
     </release>
   
-    <release version="1.1.4" date="200/08/26" description="new barcode types">
+    <release version="1.1.4" date="2007/08/26" description="new barcode types">
       <action dev="mhanisch" type="add">
         Barcode type "Code 93Extended" has been added.
       </action>
