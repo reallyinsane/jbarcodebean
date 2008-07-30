@@ -66,42 +66,6 @@ import java.awt.image.*;
  *  >http://www.gnu.org/licenses/lgpl.html</a>.
  *  </p> 
  * <hr>
- * <p>
- * <strong>THIRD PARTY COPYRIGHT</strong>
- * <p>
- * The {@link #gifEncode(OutputStream) gifEncode} method of <strong>JBarcodeBean</strong>,
- * which allows a barcode to be encoded into a GIF output stream, utilizes
- * the {@link Acme.jpm.Encoders.GifEncoder GifEncoder} class, which is
- * the copyright of Jef Poskanzer.
- * <p>
- * <blockquote><i>
- * GifEncoder is Copyright (C)1996,1998 by Jef Poskanzer <jef@acme.com>. All rights reserved.
- * </i></blockquote>
- * <p>
- * Redistribution and use in source and binary forms, with or without
- * modification, are permitted provided that the following conditions
- * are met:
- * <p>
- * 1. Redistributions of source code must retain the above copyright
- *    notice, this list of conditions and the following disclaimer.
- * <p>
- * 2. Redistributions in binary form must reproduce the above copyright
- *    notice, this list of conditions and the following disclaimer in the
- *    documentation and/or other materials provided with the distribution.
- * <p>
- * THIS SOFTWARE IS PROVIDED BY THE AUTHOR AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
- * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
- * ARE DISCLAIMED.  IN NO EVENT SHALL THE AUTHOR OR CONTRIBUTORS BE LIABLE
- * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
- * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
- * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
- * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
- * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
- * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
- * SUCH DAMAGE.
- * </p>
- * <hr>
  * <A NAME="skip_copyright"><!-- --></A>
  * <p>
  * <strong>JBarcodeBean</strong> employs the <strong>Strategy</strong> design pattern<b>*</b>
