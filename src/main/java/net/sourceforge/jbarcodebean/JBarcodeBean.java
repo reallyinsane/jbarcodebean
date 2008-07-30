@@ -158,6 +158,27 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     private static final String BARCODE_BACKGROUND_CHANGED_PROPERTY = "barcodeBackground";
     /** Identifies a change in the <b>angleDegrees</b> property. */
     private static final String ANGLE_DEGREES_CHANGED_PROPERTY = "angleDegrees";
+    /**
+     * Identifies a change of the horizontal alignment property.
+     */
+    private static final String HORIZONTAL_ALIGNMENR_PROPERTY ="horizontalAlignment";
+    
+    /**
+     * Constant indicating that the barcode should be left aligned along the
+     * x-axis.
+     */
+    public static final int ALIGN_LEFT      =1;
+
+    /**
+     * Constant indicating that the barcode should be centered along the x-axis.
+     */
+    public static final int ALIGN_CENTER    =2;
+
+    /**
+     * Constant indicating that the barcode should be right aligned along the
+     * x-axis.
+     */
+    public static final int ALIGN_RIGHT     =3;
 
     // Private fields.
     private String code;
@@ -175,6 +196,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     private int labelWidth;           // calculated
     private int barcodeWidth;         // calculated
     private String encodeError = "";
+    private int horizontalAlignment = ALIGN_CENTER;
 
     /**
      * <p>Contructor that allows an initial barcode and code type to be specified.
@@ -627,7 +649,15 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
 
         // Draw barcode
         if (encoded != null) {
-            for(int i = 0, x = (d.width - barcodeWidth) / 2; i < encoded.elements.length; i++) {
+            int x;
+            if(horizontalAlignment==ALIGN_LEFT){
+                x=0;
+            } else if (horizontalAlignment==ALIGN_RIGHT){
+                x=d.width-barcodeWidth;
+            } else {
+                x=(d.width-barcodeWidth)/2;
+            }
+            for(int i = 0; i < encoded.elements.length; i++) {
                 if (encoded.elements[i].getType()==BarcodeElement.TYPE_BAR) {
                     // bar
                     g.setColor(getForeground());
@@ -779,6 +809,37 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         doPaint(g, new Dimension(image.getWidth(), image.getHeight()), new Insets(0, 0, 0, 0));
         return image;
-    }  
+    }
+
+    /**
+     * Returns the alignment of the barcode along the X axis. 
+     * @return The value of the horizontalAlignment property, one of the
+     * following constants: {@link #ALIGN_LEFT}, {@link #ALIGN_RIGHT},
+     * {@link #ALIGN_CENTER}
+     * @see #setHorizontalAlignment(int)
+     * @since 1.2.0
+     */
+    public int getHorizontalAlignment() {
+        return horizontalAlignment;
+    }
+
+    /**
+     * Sets the alignment of the barcode along the X axis.
+     * This is a JavaBeans bound property. 
+     * @param horizontalAlignment One of the following constants : 
+     * {@link #ALIGN_LEFT}, {@link #ALIGN_RIGHT},
+     * {@link #ALIGN_CENTER} (the default)
+     * @see #getHorizontalAlignment()
+     * @since 1.2.0
+     */
+    public void setHorizontalAlignment(int horizontalAlignment) {
+        int oldValue=this.horizontalAlignment;
+        this.horizontalAlignment = horizontalAlignment;
+        firePropertyChange(HORIZONTAL_ALIGNMENR_PROPERTY , oldValue, horizontalAlignment);
+        recalculateSizes();
+        repaint();
+    }
+    
+    
 }
 
