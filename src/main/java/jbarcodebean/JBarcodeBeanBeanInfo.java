@@ -26,7 +26,6 @@ package jbarcodebean;
 public class JBarcodeBeanBeanInfo extends net.sourceforge.jbarcodebean.JBarcodeBeanBeanInfo {
 
     public JBarcodeBeanBeanInfo() {
-        // TODO Auto-generated constructor stub
     }
 
 }

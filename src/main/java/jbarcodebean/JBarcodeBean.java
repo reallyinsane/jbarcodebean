@@ -29,11 +29,9 @@ public class JBarcodeBean extends net.sourceforge.jbarcodebean.JBarcodeBean {
 
     public JBarcodeBean(String code, BarcodeStrategy codeType) {
         super(code, codeType);
-        // TODO Auto-generated constructor stub
     }
 
     public JBarcodeBean() {
-        // TODO Auto-generated constructor stub
     }
 
 }
