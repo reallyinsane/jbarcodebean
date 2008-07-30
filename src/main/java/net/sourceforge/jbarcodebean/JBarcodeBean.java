@@ -38,6 +38,8 @@ import net.sourceforge.jbarcodebean.model.Interleaved25_2to1;
 import net.sourceforge.jbarcodebean.model.MSI;
 
 import java.io.*;
+import java.net.URL;
+import java.util.Properties;
 import java.awt.image.*;
 
 /**
@@ -132,13 +134,6 @@ import java.awt.image.*;
  * @version 1.1
  */
 public class JBarcodeBean extends JComponent implements java.io.Serializable, Accessible {
-
-    /**
-     * The current version of JBarcodeBean. Please do not change the value if the
-     * constant as it will be replaced during the build process. (Currently an
-     * ANT script)
-     */
-    private static final String VERSION   ="${jbarcodebean.version}";
 
     // Property change constants
 
@@ -788,7 +783,18 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
      * @return The version string in format: <i>major.minor[.micro]</i>
      */
     public static String getVersion() {
-        return VERSION;
+        
+        Class cl=JBarcodeBean.class;
+        URL url = cl.getResource("/META-INF/maven/net.sourceforge.jbarcodebean/jbarcodebean/pom.properties");
+        Properties props=new Properties();
+        try {
+            InputStream in=url.openStream();
+            props.load(in);
+            in.close();
+        } catch (IOException e) {
+            return "unknown";
+        }
+        return props.getProperty("version");
     }
 
     /**
