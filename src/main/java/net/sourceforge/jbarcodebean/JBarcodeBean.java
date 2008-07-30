@@ -761,6 +761,13 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         return VERSION;
     }
 
+    /**
+     * Draws the current barcode into the given image and returns it. 
+     * @param image The image the barcode will be drawn into or
+     * <code>null</code> if a new image should be created using the preferred
+     * size of the barcode.
+     * @return The image containing the barcode.
+     */
     public BufferedImage draw(BufferedImage image) {
         if(image==null) {
             Dimension pref=getPreferredSize();
