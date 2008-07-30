@@ -39,7 +39,16 @@
       </roles>
       <timezone>+1</timezone>
     </developer>
-  </developers>  
+  </developers>
+  <contributors>
+  	<contributor>
+      <name>Jose Gaonac'h</name>
+      <roles>
+        <role>EAN-8, EAN-13</role>
+      </roles>
+    </contributor>
+  	
+  </contributors>  
   <licenses>
     <license>
       <name>GNU Lesser General Public License (LGPL), version 3.0</name>
@@ -71,18 +80,6 @@
           <linksource>true</linksource>
           <aggregate>true</aggregate>
           <keywords>true</keywords>
-          <links>
-            <link>http://java.sun.com/j2se/1.5.0/docs/api/</link>
-            <link>http://testng.org/javadocs/</link>
-            <link>http://jakarta.apache.org/commons/logging/apidocs/</link>
-          </links>
-          <tags>
-            <tag>
-              <name>todo</name>
-              <placement>a</placement>
-              <head>This needs to be done:</head>
-            </tag>
-          </tags>
         </configuration>
       </plugin>
       <plugin>
