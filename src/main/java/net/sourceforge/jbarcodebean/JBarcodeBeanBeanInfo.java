@@ -18,7 +18,14 @@
  */
 package net.sourceforge.jbarcodebean;
 
-import java.beans.*;
+import java.beans.BeanDescriptor;
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.PropertyDescriptor;
+import java.beans.SimpleBeanInfo;
+import java.net.URL;
+
+import javax.swing.ImageIcon;
 
 /**
  * This class is an implementation of the <tt><b>java.beans.BeanInfo</b></tt>
@@ -36,22 +43,30 @@ public class JBarcodeBeanBeanInfo extends SimpleBeanInfo {
     }
 
   public java.awt.Image getIcon(int iconKind) {
-    java.awt.Image img = null;
+    String iconName=null;
     switch (iconKind) {
-      case BeanInfo.ICON_MONO_16x16:
-        img = loadImage("jbarcodebean_bw16.gif");
+    case BeanInfo.ICON_MONO_16x16:
+        iconName="jbarcodebean_bw16.gif";
         break;
-      case BeanInfo.ICON_COLOR_16x16:
-        img = loadImage("jbarcodebean_c16.gif");
+    case BeanInfo.ICON_COLOR_16x16:
+        iconName="jbarcodebean_c16.gif";
         break;
-      case BeanInfo.ICON_MONO_32x32:
-        img = loadImage("jbarcodebean_bw32.gif");
+    case BeanInfo.ICON_MONO_32x32:
+        iconName="jbarcodebean_bw32.gif";
         break;
-      case BeanInfo.ICON_COLOR_32x32:
-        img = loadImage("jbarcodebean_c32.gif");
+    case BeanInfo.ICON_COLOR_32x32:
+        iconName="jbarcodebean_c32.gif";
         break;
     }
-    return img;
+    if(iconName!=null){
+        URL url=beanClass.getResource(iconName);
+        if(url!=null){
+            return new ImageIcon(url).getImage();
+        } else{
+            return null;
+        }
+    }
+    return null;
   }
 
   public PropertyDescriptor[] getPropertyDescriptors() {
