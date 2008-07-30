@@ -2,8 +2,7 @@
 <document>
   <properties>
     <title>Changes BarcodeBean Project</title>
-    <author>Dafydd Walters</author>
-    <author>Matthias Hanisch</author>
+    <author email="mhanisch@sourceforge.net">Matthias Hanisch</author>
   </properties>
   <body>
     <release version="1.2" date="soon" description="first maven release">
@@ -12,8 +11,10 @@
     	<action dev="mhanisch" type="update">Package structure changed to net.sourceforge.jbarcodebean.</action>
     	<action dev="mhanisch" type="update">Removed dependency from ACME GIF encoder</action>
     	<action dev="mhanisch" type="add">Rendering into buffered images added.</action>
+    	<action dev="mhanisch" type="add">Horizontal alignment added.</action>
     </release>
-  
+    <release version="1.1.5" date="2008/01/09 " description="bugfix release">
+    </release>
     <release version="1.1.4" date="2007/08/26" description="new barcode types">
       <action dev="mhanisch" type="add">
         Barcode type "Code 93Extended" has been added.
