@@ -117,6 +117,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     private static final String BARCODE_BACKGROUND_CHANGED_PROPERTY = "barcodeBackground";
     /** Identifies a change in the <b>angleDegrees</b> property. */
     private static final String ANGLE_DEGREES_CHANGED_PROPERTY = "angleDegrees";
+    
     /**
      * Identifies a change of the horizontal alignment property.
      */
@@ -130,6 +131,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
 
     /**
      * Constant indicating that the barcode should be centered along the x-axis.
+     * (This is the default behaviour)
      */
     public static final int ALIGN_CENTER    =2;
 
@@ -139,6 +141,32 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
      */
     public static final int ALIGN_RIGHT     =3;
 
+    
+    /**
+     * Identifies a change of the label position property.
+     */
+    private static final String LABEL_POSITION_PROPERTY ="labelPosition";
+    
+    /**
+     * Constant indicating that the human readable barcode text should be
+     * printed at the top of the barcode.
+     */
+    public static final int LABEL_TOP       = 1;
+
+    /**
+     * Constant indicating that the human readable barcode text should be
+     * printed at the bottom of the barcode. (This is the default behaviour)
+     */
+    public static final int LABEL_BOTTOM    = 2;
+    
+    /**
+     * Constant indicating that the human readable barcode text should not be
+     * printed at all.
+     */
+    public static final int LABEL_NONE      = 0;
+    
+    
+    
     // Private fields.
     private String code;
     private BarcodeStrategy codeType;
@@ -147,7 +175,6 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     private int narrowestBarWidth = 1;
     private int barcodeHeight = 40;
     private Color barcodeBackground = Color.white;
-    private boolean showText;
     private Dimension minimumSize;
     private Dimension preferredSize;
     private double angleDegrees;
@@ -156,6 +183,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
     private int barcodeWidth;         // calculated
     private String encodeError = "";
     private int horizontalAlignment = ALIGN_CENTER;
+    private int labelPosition = LABEL_BOTTOM;
 
     /**
      * <p>Contructor that allows an initial barcode and code type to be specified.
@@ -230,22 +258,27 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
      * Accessor method for the <tt><b>showText</b></tt> property, which
      * determines whether or not the text caption is visible below the
      * barcode. <tt>true</tt> = visible, <tt>false</tt> = not visible.
+     * @deprecated As of 1.2.0, replaced by {@link #getLabelPosition()}.
+     * This will return <tt>true</tt> if label position is {@link #LABEL_BOTTOM}
+     * and <tt>false</tt> otherwise.
      */
     public boolean isShowText() {
-        return showText;
+        return this.labelPosition==LABEL_BOTTOM;
     }
 
     /**
      * Mutator method for the <tt><b>showText</b></tt> property, which
      * determines whether or not the text caption is visible below the
      * barcode. <tt>true</tt> = visible, <tt>false</tt> = not visible.
+     * @deprecated As of 1.2.0, replaced by {@link #setLabelPosition(int)}. When
+     * setting this property to <tt>true</tt> the label position will be set to
+     * {@link #LABEL_BOTTOM}, setting the property to <tt>false</tt> will set
+     * the label position to {@link #LABEL_NONE}. 
      */
     public void setShowText(boolean showText) {
-        boolean oldValue = this.showText;
-        this.showText = showText;
+        boolean oldValue = isShowText();
+        setLabelPosition(showText?LABEL_BOTTOM:LABEL_NONE);
         firePropertyChange(SHOW_TEXT_CHANGED_PROPERTY, oldValue, showText);
-        recalculateSizes();
-        repaint();
     }
 
     /**
@@ -605,6 +638,11 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         g.rotate(angleDegrees / 180 * Math.PI, d.width / 2.0, d.height / 2.0);
 
         int barcodeTop = (d.height - (barcodeHeight + labelHeight)) / 2;
+        if(labelPosition!=LABEL_TOP){
+            barcodeTop=(d.height - (barcodeHeight + labelHeight)) / 2;
+        } else{
+            barcodeTop=(d.height - (barcodeHeight + labelHeight)) / 2+labelHeight;
+        }
 
         // Draw barcode
         if (encoded != null) {
@@ -630,14 +668,18 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
             }
 
             // Draw text
-            if (showText) {
+            if (labelPosition!=LABEL_NONE) {
                 g.setFont(this.getFont());
                 g.setColor(getForeground());
                 FontMetrics fm = getFontMetrics(g.getFont());
+                int labelTop;
+                if(labelPosition==LABEL_BOTTOM) {
+                    labelTop = barcodeTop + barcodeHeight + fm.getAscent();
+                } else {
+                    labelTop = barcodeTop - labelHeight + fm.getAscent();
+                }
                 g.drawString(encoded.barcodeLabelText,
-                        (d.width - labelWidth) / 2,
-                        barcodeTop + barcodeHeight + fm.getAscent()
-                );
+                        (d.width - labelWidth) / 2, labelTop);
             }
         } else if (!encodeError.equals("")) {
             // Display error
@@ -663,7 +705,7 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
 
     private void recalculateSizes() {
 
-        if (showText) {
+        if (labelPosition!=LABEL_NONE) {
             FontMetrics fm = getFontMetrics(getFont());
             labelHeight = fm.getAscent() + fm.getDescent();
         } else {
@@ -752,6 +794,9 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         URL url = cl.getResource("/META-INF/maven/net.sourceforge.jbarcodebean/jbarcodebean/pom.properties");
         Properties props=new Properties();
         try {
+            if(url==null){
+                return "unknown";
+            }
             InputStream in=url.openStream();
             props.load(in);
             in.close();
@@ -809,7 +854,34 @@ public class JBarcodeBean extends JComponent implements java.io.Serializable, Ac
         recalculateSizes();
         repaint();
     }
-    
+
+    /**
+     * Returns the label position of the human readable barcode text.
+     * @return The value of the labelPosition property, one of the following
+     * constants: {@link #LABEL_BOTTOM}, {@link #LABEL_TOP} or
+     * {@link #LABEL_NONE}.
+     * @see #setLabelPosition(int)
+     * @since 1.2.0
+     */
+    public int getLabelPosition() {
+        return labelPosition;
+    }
+
+    /**
+     * Sets the label position of the human readable bacode text.
+     * This is a JavaBeans bound property.
+     * @param labelPosition One of the following constants:
+     * {@link #LABEL_BOTTOM}, {@link #LABEL_TOP} or {@link #LABEL_NONE}.
+     * @see #getLabelPosition()
+     * @since 1.2.0
+     */
+    public void setLabelPosition(int labelPosition) {
+        int oldValue=this.labelPosition;
+        this.labelPosition = labelPosition;
+        firePropertyChange(LABEL_POSITION_PROPERTY, oldValue, labelPosition);
+        recalculateSizes();
+        repaint();
+    }
     
 }
 
