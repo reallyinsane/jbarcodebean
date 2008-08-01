@@ -12,6 +12,7 @@
     	<action dev="mhanisch" type="update">Removed dependency from ACME GIF encoder</action>
     	<action dev="mhanisch" type="add">Rendering into buffered images added.</action>
     	<action dev="mhanisch" type="add">Horizontal alignment added.</action>
+    	<action dev="mhanisch" type="add">Label position property added.</action>
     </release>
     <release version="1.1.5" date="2008/01/09 " description="bugfix release">
     </release>
