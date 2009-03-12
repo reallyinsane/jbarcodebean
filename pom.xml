@@ -96,10 +96,13 @@
           <issueLinkTemplate>http://sourceforge.net/support/tracker.php?aid=%ISSUE%</issueLinkTemplate>
         </configuration>
       </plugin>
+      <!-- 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
-      </plugin>
+        <version>2.0</version>
+       </plugin>
+        -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
@@ -134,8 +137,7 @@
     <site>
       <id>sourceforge</id>
       <name>Website for JBarcodeBean on SourceForge</name>
-      <url>sftp://shell.sourceforge.net//home/groups/j/jb/jbarcodebean/htdocs/site</url>
-      <!--  >url>sftp://mhanisch@shell.sourceforge.net//home/groups/j/jb/jbarcodebean/htdocs/site</url -->
+      <url>scp://mhanisch,jbarcodebean@shell.sourceforge.net/home/groups/j/jbo/jbarcodebean/htdocs</url>
     </site>
   </distributionManagement>  
 </project>
