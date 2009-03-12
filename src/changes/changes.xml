@@ -5,7 +5,7 @@
     <author email="mhanisch@sourceforge.net">Matthias Hanisch</author>
   </properties>
   <body>
-    <release version="1.2" date="soon" description="first maven release">
+    <release version="1.2.0" date="2009/03/12" description="first maven release">
     	<action dev="dwalters" type="update">Changed Repository from CVS to SVN.</action>
     	<action dev="mhanisch" type="update">Introdution of Maven as build system.</action>
     	<action dev="mhanisch" type="update">Package structure changed to net.sourceforge.jbarcodebean.</action>
