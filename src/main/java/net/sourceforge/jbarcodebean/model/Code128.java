@@ -239,8 +239,7 @@ public class Code128 extends AbstractBarcodeStrategy {
    * Inserts start character and code change characters.
    */
   protected String preprocess(String text) throws BarcodeException {
-
-    String preprocessed = new String();
+    StringBuilder preprocessed = new StringBuilder();
     char mode = 0;
     char startFunction = 0;
     char c1 = 0;
@@ -267,17 +266,17 @@ public class Code128 extends AbstractBarcodeStrategy {
         startFunction != FNC_2 && startFunction != FNC_3 &&
         startFunction != FNC_4) {
       // Use "C" start character.
-      preprocessed += START_C;
+      preprocessed.append(START_C);
       mode = MODE_C;
     }
     else if (c1 >= ' ' && c1 <= '\u007f') {
       // Use "B" start character.
-      preprocessed += START_B;
+      preprocessed.append(START_B);
       mode = MODE_B;
     }
     else {
       // Use "A" start character.
-      preprocessed += START_A;
+      preprocessed.append(START_A);
       mode = MODE_A;
     }
 
@@ -299,22 +298,22 @@ public class Code128 extends AbstractBarcodeStrategy {
 
           if (c1 == FNC_1) {
             // FNC_1.
-            preprocessed += FNC_1;
+            preprocessed.append(FNC_1);
           }
           else if (c1 >= '0' && c1 <= '9' && c2 >= '0' && c2 <= '9') {
             // Two digit encode.
-            preprocessed += convertCodeC(text.substring(i,i+2));
+            preprocessed.append(convertCodeC(text.substring(i,i+2)));
             i++;
           }
           else if (c1 >= ' ' && c1 <= '\u007f') {
             // Need to change to mode B.
-            preprocessed += FNC_4;  // Corresponds to Mode B.
+            preprocessed.append(FNC_4);  // Corresponds to Mode B.
             mode = MODE_B;
             i--;
           }
           else {
             // Need to change to mode A.
-            preprocessed += MODE_A;
+            preprocessed.append(MODE_A);
             mode = MODE_A;
             i--;
           }
@@ -325,21 +324,21 @@ public class Code128 extends AbstractBarcodeStrategy {
 
           if (c1 >= '0' && c1 <= '9' && c2 >= '0' && c2 <= '9') {
             // Two digits; Change to mode C.
-            preprocessed += MODE_C;
+            preprocessed.append(MODE_C);
             mode = MODE_C;
             i--;
           }
           else if (c1 >= ' ' && c1 <= '\u007f') {
             // Acceptable mode B character.
-            preprocessed += c1;
+            preprocessed.append(c1);
           }
           else if (c1 == FNC_1 || c1 == FNC_2 || c1 == FNC_3 || c1 == FNC_4)  {
             // A function code.
-            preprocessed += c1;
+            preprocessed.append(c1);
           }
           else {
             // Control character; Change to mode A.
-            preprocessed += MODE_A;
+            preprocessed.append(MODE_A);
             mode = MODE_A;
             i--;
           }
@@ -350,29 +349,29 @@ public class Code128 extends AbstractBarcodeStrategy {
 
           if (c1 >= '0' && c1 <= '9' && c2 >= '0' && c2 <= '9') {
             // Two digits; Change to mode C.
-            preprocessed += MODE_C;
+            preprocessed.append(MODE_C);
             mode = MODE_C;
             i--;
           }
           else if (c1 < ' ') {
             // Control character.
-            preprocessed += (c1 + '`');
+            preprocessed.append((char)(c1 + '`'));
           }
           else if (c1 <= '_') {
             // Upper case character.
-            preprocessed += c1;
+            preprocessed.append(c1);
           }
           else if (c1 == FNC_1 || c1 == FNC_2 || c1 == FNC_3)  {
             // Function code 1, 2 or 3.
-            preprocessed += c1;
+            preprocessed.append(c1);
           }
           else if (c1 == FNC_4)  {
             // Function code 4.
-            preprocessed += MODE_A;   // Corresponds to FNC_4.
+            preprocessed.append(MODE_A);   // Corresponds to FNC_4.
           }
           else {
             // Change to mode B.
-            preprocessed += FNC_4;  // Corresponds to Mode B.
+            preprocessed .append(FNC_4);  // Corresponds to Mode B.
             mode = MODE_B;
             i--;
           }
@@ -381,7 +380,7 @@ public class Code128 extends AbstractBarcodeStrategy {
       }
     }
 
-    return preprocessed;
+    return preprocessed.toString();
   }
 
   /**
