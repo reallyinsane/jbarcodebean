@@ -4,7 +4,7 @@
   <groupId>net.sourceforge.jbarcodebean</groupId>
   <artifactId>jbarcodebean</artifactId>
   <name>JBarcodeBean</name>
-  <version>1.2.0-SNAPSHOT</version>
+  <version>1.2.1-SNAPSHOT</version>
   <description>
     JBarcodeBean is a JFC Swing-compatible JavaBeans component that lets you barcode-enable Java enterprise applications.
   </description>
@@ -69,6 +69,28 @@
     <developerConnection>scm:svn:https://jbarcodebean.svn.sourceforge.net/svnroot/jbarcodebean/branches/maven/jbarcodebean</developerConnection>
     <url>https://jbarcodebean.svn.sourceforge.net/svnroot/jbarcodebean/branches/maven/jbarcodebean</url>
   </scm>
+    <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>2.3.1</version>
+        <configuration>
+          <archive>
+          <manifestSections>
+              <manifestSection>
+                <name>net/sourceforge/jbarcodebean/JBarcodeBean</name>
+                <manifestEntries>
+                  <Java-Bean>true</Java-Bean>
+                </manifestEntries>
+              </manifestSection>
+            </manifestSections>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  
     <reporting>
     <plugins>
       <plugin>
@@ -140,5 +162,6 @@
       <url>scp://mhanisch,jbarcodebean@shell.sourceforge.net/home/groups/j/jbo/jbarcodebean/htdocs</url>
     </site>
   </distributionManagement>  
+ 
 </project>
 
